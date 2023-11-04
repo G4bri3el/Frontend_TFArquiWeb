@@ -1,18 +1,20 @@
-export class Usuario{
-    id: number= 0;
-    correo: string = "";
-    contrasena: string = "";
-    telefono: string = "";
-    nombre: string= "";
-    apellido: string= "";
-    dni: string= "";
-    edad: number= 0;
+import { Roles } from "./roles";
 
-    ciudad: string= "";
-    foto: string="";
-    razonSocial: string= "";
-    direcion: string= "";
-    ruc: string= "";
-    enabled: boolean= true;
-    roles: number=0;
+export class Usuario{
+    usuarioId: number= 0;
+    usuarioCorreo: string = "";
+    usuarioContrasena: string = "";
+    usuarioTelefono: number= 0;
+    usuarioNombre: string= "";
+    usuarioApellido: string= "";
+    usuarioDni: string= "";
+    usuarioEdad: number= 0;
+    usuarioCiudad: string= "";
+    
+    usuarioFoto: string="";
+    usuarioRazonsocial: string= "";
+    usuarioDireccion: string= "";
+    usuarioRuc: string= "";
+    usuarioEnabled: boolean= true;
+    roles: Roles = new Roles();
 }
