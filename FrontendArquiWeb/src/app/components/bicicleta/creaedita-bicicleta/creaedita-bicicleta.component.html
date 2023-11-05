@@ -15,7 +15,6 @@
 
         <form [formGroup]="form" (submit)="aceptar()" class="example-form" >
 
-          
             <mat-form-field class="example-full-width">
                 <mat-label>Modelo</mat-label>
                 <input matInput placeholder="Modelo" formControlName="bicicletamodelo" />
@@ -23,34 +22,27 @@
             </mat-form-field>
             <br />
 
-            
             <mat-form-field class="example-full-width">
                 <mat-label>Estado</mat-label>
                 <mat-select formControlName="bicicletaestado">
                   <!--- valor / vista de bicicleta -->
                   <mat-option *ngFor="let p of tiposestado" [value]="p.value">{{p.viewValue}}</mat-option>
                 </mat-select>
-                
-              </mat-form-field>
+            </mat-form-field>
             <br />
-        
        
             <mat-form-field class="example-full-width">
                 <mat-label>Precio</mat-label>
                 <input matInput placeholder="Precio" formControlName="bicicletaprecio" />
-               
             </mat-form-field>
             <br />
-
 
             <mat-form-field class="example-full-width">
                 <mat-label>Número de aro</mat-label>
                 <input matInput placeholder="Número de aro" formControlName="bicicletanumaro" />
-                
             </mat-form-field>
             <br />
 
-            
             <mat-form-field class="example-full-width">
                 <mat-label>Detalles</mat-label>
                 <input matInput placeholder="Detalles" formControlName="bicicletadetalles" />
@@ -70,17 +62,13 @@
                   <!--- valor / vista de bicicleta -->
                   <mat-option *ngFor="let p of listaLocales" [value]="p.localid">{{p.localnombre}}</mat-option>
                 </mat-select>
-               
-              </mat-form-field>
+            </mat-form-field>
             <br />
     
             <button mat-raised-button color="primary">Aceptar</button>
             <button mat-raised-button color="accent" routerLink="/bicicleta">Cancelar</button>
             <p>{{ mensaje }}</p>
-
         </form>
-
-
     </div>
 </body>
 
