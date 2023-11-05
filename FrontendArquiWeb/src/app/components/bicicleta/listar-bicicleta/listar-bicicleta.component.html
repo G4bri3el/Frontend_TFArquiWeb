@@ -13,6 +13,11 @@
         <br />
         <h2 style="text-align: center">Lista de bicicletas</h2>
 
+        <div style="text-align: right;">
+            <button mat-raised-button color="primary" routerLink="/bicicleta/nuevo">Nuevo</button>
+        </div>
+        <br>
+
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
             <ng-container matColumnDef="codigo">
