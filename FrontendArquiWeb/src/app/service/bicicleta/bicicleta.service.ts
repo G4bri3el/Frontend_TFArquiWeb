@@ -22,13 +22,26 @@ export class BicicletaService {
   insert(bi: Bicicleta) {
     return this.http.post(this.url, bi);
   }
+
   setList(listaNueva: Bicicleta[]) {
     this.listaCambio.next(listaNueva);
   }
 
+  
   getList() {
     return this.listaCambio.asObservable();
   }
   
+  listId(id: number) {
+    return this.http.get<Bicicleta>(`${this.url}/${id}`);
+  }
+  update(b: Bicicleta) {
+    return this.http.put(this.url, b);
+  }
+
+  delete(id: number) {
+    return this.http.delete(`${this.url}/${id}`);
+  }
+
 
 }

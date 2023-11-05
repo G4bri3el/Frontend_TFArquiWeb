@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Bicicleta } from 'src/app/model/bicicleta';
 import { Local } from 'src/app/model/local';
 import { BicicletaService } from 'src/app/service/bicicleta/bicicleta.service';
@@ -15,7 +15,7 @@ export class CreaeditaBicicletaComponent {
   form: FormGroup = new FormGroup({});
   bici: Bicicleta = new Bicicleta();
   mensaje: string = '';
-
+ 
   tiposestado: { value: boolean; viewValue: string }[] = [
     { value: true, viewValue: 'Disponible' },
     { value: false, viewValue: 'No disponible' },
@@ -27,13 +27,14 @@ export class CreaeditaBicicletaComponent {
     private lS: LocalService,
     private router: Router,
     private formBuilder: FormBuilder,
-    private bS: BicicletaService
-  ) { }
+    private bS: BicicletaService,
+    private route: ActivatedRoute
 
+  ) { }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      bicicletamodelo: ['', Validators.required], //nombres para html (form control name)
+      bicicletamodelo: ['', Validators.required], 
       bicicletaestado: ['', Validators.required],
       bicicletaprecio: ['', Validators.required],
       bicicletanumaro: ['', Validators.required],
@@ -48,9 +49,6 @@ export class CreaeditaBicicletaComponent {
     });
   }
 
-
-  
-
   aceptar(): void {
     if (this.form.valid) {
       this.bici.bicicletamodelo = this.form.value.bicicletamodelo;
@@ -61,14 +59,14 @@ export class CreaeditaBicicletaComponent {
       this.bici.bicicletafoto = this.form.value.bicicletafoto;
       this.bici.local.localid = this.form.value.local;
 
-
-      this.bS.insert(this.bici).subscribe((data) => {
-        this.bS.list().subscribe((data) => {
-          this.bS.setList(data);
+      this.bS.insert(this.bici).subscribe(data => {
+        this.bS.list().subscribe(lista => {
+          this.bS.setList(lista);
         });
       });
+
       this.router.navigate(['bicicleta']);
-    } else {
+    }else{
       this.mensaje = 'Por favor complete todos los campos obligatorios.';
     }
   }
@@ -80,7 +78,6 @@ export class CreaeditaBicicletaComponent {
     }
     return control;
   }
-
 
 
 }

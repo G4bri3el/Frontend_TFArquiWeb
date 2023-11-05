@@ -12,7 +12,7 @@ import { BicicletaService } from 'src/app/service/bicicleta/bicicleta.service';
 export class ListarBicicletaComponent {
   dataSource: MatTableDataSource<Bicicleta> = new MatTableDataSource();
   displayedColumns: string[] =
-  ['codigo', 'modelo', 'estado', 'precio', 'numaro', 'detalles', 'foto', 'local'];
+  ['codigo', 'modelo', 'estado', 'precio', 'numaro', 'detalles', 'foto', 'local', 'eliminar'];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   constructor(private bS: BicicletaService) {}
 
@@ -30,4 +30,14 @@ export class ListarBicicletaComponent {
     });
 
   }
+
+  eliminar(id: number) {
+    this.bS.delete(id).subscribe((data) => {
+      this.bS.list().subscribe((data) => {
+        this.bS.setList(data);
+      });
+    });
+  }
+
+
 }

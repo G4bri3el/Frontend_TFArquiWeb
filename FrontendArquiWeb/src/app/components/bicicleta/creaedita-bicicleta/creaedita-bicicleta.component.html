@@ -13,10 +13,9 @@
         <br>
         <h2>Registro de bicicletas</h2>
 
-        <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+        <form [formGroup]="form" (submit)="aceptar()" class="example-form" >
 
-
-            <br />
+          
             <mat-form-field class="example-full-width">
                 <mat-label>Modelo</mat-label>
                 <input matInput placeholder="Modelo" formControlName="bicicletamodelo" />
@@ -74,9 +73,7 @@
                
               </mat-form-field>
             <br />
-        
-
-
+    
             <button mat-raised-button color="primary">Aceptar</button>
             <button mat-raised-button color="accent" routerLink="/bicicleta">Cancelar</button>
             <p>{{ mensaje }}</p>
