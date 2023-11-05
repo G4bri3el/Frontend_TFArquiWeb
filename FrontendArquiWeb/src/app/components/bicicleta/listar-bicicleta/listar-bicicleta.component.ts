@@ -26,7 +26,6 @@ export class ListarBicicletaComponent {
     this.bS.getList().subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
-
     });
 
   }
@@ -38,6 +37,4 @@ export class ListarBicicletaComponent {
       });
     });
   }
-
-
 }
