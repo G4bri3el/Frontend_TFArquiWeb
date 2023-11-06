@@ -11,6 +11,8 @@ import { MaterialModule } from './material/material.module';
 import { BicicletaComponent } from './components/bicicleta/bicicleta.component';
 import { CreaeditaBicicletaComponent } from './components/bicicleta/creaedita-bicicleta/creaedita-bicicleta.component';
 import { ListarBicicletaComponent } from './components/bicicleta/listar-bicicleta/listar-bicicleta.component';
+import { HomeComponent } from './components/home/home.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { ListarBicicletaComponent } from './components/bicicleta/listar-biciclet
     CreaeditaUsuarioComponent,
     BicicletaComponent,
     CreaeditaBicicletaComponent,
-    ListarBicicletaComponent
+    ListarBicicletaComponent,
+    HomeComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
