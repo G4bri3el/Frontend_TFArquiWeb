@@ -5,10 +5,12 @@ import { CreaeditaUsuarioComponent } from './components/usuario/creaedita-usuari
 import { BicicletaComponent } from './components/bicicleta/bicicleta.component';
 import { CreaeditaBicicletaComponent } from './components/bicicleta/creaedita-bicicleta/creaedita-bicicleta.component';
 import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
+  { path: 'login', component: LoginComponent},
   {
     path: 'usuario', component: UsuarioComponent,
     children: [

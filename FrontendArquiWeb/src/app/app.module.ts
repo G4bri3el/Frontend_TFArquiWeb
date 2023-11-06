@@ -13,6 +13,7 @@ import { CreaeditaBicicletaComponent } from './components/bicicleta/creaedita-bi
 import { ListarBicicletaComponent } from './components/bicicleta/listar-bicicleta/listar-bicicleta.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     CreaeditaBicicletaComponent,
     ListarBicicletaComponent,
     HomeComponent,
-    NavbarComponent
+    NavbarComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
