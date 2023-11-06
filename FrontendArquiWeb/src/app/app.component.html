@@ -2,6 +2,8 @@
   <mat-icon>menu</mat-icon>
   <button mat-button [matMenuTriggerFor]="menuUsuarios">Usuarios</button>
   <button mat-button [matMenuTriggerFor]="menuLocales">Locales</button>
+  <button mat-button [matMenuTriggerFor]="menuBicicletas">Bicicleta</button>
+
 </mat-toolbar>
 
 <mat-menu #menuUsuarios="matMenu">
@@ -17,5 +19,12 @@
   <button mat-menu-item routerLink="/local">Listar Locales</button>
   <!-- Agrega más elementos de menú si es necesario -->
 </mat-menu>
+
+<mat-menu #menuBicicletas="matMenu">
+  <button mat-menu-item routerLink="/bicicleta/nuevo">Registrar Bicicleta</button>
+  <button mat-menu-item routerLink="/bicicleta">Listar Bicicletas</button>
+  <!-- Agrega más elementos de menú si es necesario -->
+</mat-menu>
+
 
 <router-outlet></router-outlet>

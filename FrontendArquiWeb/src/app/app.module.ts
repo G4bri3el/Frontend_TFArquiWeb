@@ -8,13 +8,19 @@ import { UsuarioComponent } from './components/usuario/usuario.component';
 import { LocalComponent } from './components/local/local.component';
 import { CreaeditaUsuarioComponent } from './components/usuario/creaedita-usuario/creaedita-usuario.component';
 import { MaterialModule } from './material/material.module';
+import { BicicletaComponent } from './components/bicicleta/bicicleta.component';
+import { CreaeditaBicicletaComponent } from './components/bicicleta/creaedita-bicicleta/creaedita-bicicleta.component';
+import { ListarBicicletaComponent } from './components/bicicleta/listar-bicicleta/listar-bicicleta.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsuarioComponent,
     LocalComponent,
-    CreaeditaUsuarioComponent
+    CreaeditaUsuarioComponent,
+    BicicletaComponent,
+    CreaeditaBicicletaComponent,
+    ListarBicicletaComponent
   ],
   imports: [
     BrowserModule,
