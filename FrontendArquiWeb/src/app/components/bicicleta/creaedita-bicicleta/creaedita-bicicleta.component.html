@@ -49,13 +49,6 @@
             <br />
 
             <mat-form-field class="example-full-width">
-                <mat-label>Foto</mat-label>
-                <input matInput placeholder="Foto" formControlName="bicicletafoto" />
-            </mat-form-field>
-            <br />
-
-    
-            <mat-form-field class="example-full-width">
                 <mat-label>Local</mat-label>
                 <mat-select formControlName="local">
                   <!--- valor / vista de bicicleta -->
@@ -63,9 +56,15 @@
                 </mat-select>
             </mat-form-field>
             <br />
-    
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Foto</mat-label>
+                <input matInput placeholder="Foto" formControlName="bicicletafoto" />
+            </mat-form-field>
+            <br />
+
             <button mat-raised-button color="primary">Aceptar</button>
-            <button mat-raised-button color="accent" routerLink="/bicicleta">Cancelar</button>
+            <button mat-raised-button color="warn" routerLink="/bicicleta">Cancelar</button>
             <p>{{ mensaje }}</p>
         </form>
     </div>
