@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservas</title>
+</head>
+<body>
+    <div class="container">
+        <br>
+        <h2>Registro de Reservas</h2>
+        <br>
+
+    <!--Fecha de inicio del ingrediente-->
+      <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+        <mat-form-field appearance="fill" class="example-full-width">
+            <input
+              matInput
+              placeholder="Ingrese fecha de inicio"
+              [matDatepicker]="picker"
+              formControlName="reservafechainicio"
+              [max]="maxFecha"
+            />
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error
+              *ngIf="obtenerControlCampo('reservafechainicio')?.errors?.['required']"
+            >
+             La fecha de inicio es obligatoria.
+            </mat-error>
+        </mat-form-field>
+          <br />
+
+          <!--Fecha de fin del ingrediente-->
+
+          <mat-form-field appearance="fill" class="example-full-width">
+            <input
+              matInput
+              placeholder="Ingrese fecha de fin"
+              [matDatepicker]="pickerFin"
+              formControlName="reservafechafin"
+              [max]="maxFechaFin"
+            />
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="pickerFin"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #pickerFin></mat-datepicker>
+            <mat-error
+              *ngIf="obtenerControlCampo('reservafechafin')?.errors?.['required']"
+            >
+             La fecha de fin es obligatoria.
+            </mat-error>
+            </mat-form-field>
+          <br />
+        <!--
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Monto</mat-label>  
+          <input matInput placeholder="Fecha de fin" formControlName="reservamontototal" />
+          <mat-error *ngIf="obtenerControlCampo('reservamontototal')?.errors?.['required']">
+            La cantidad es obligatoria.
+          </mat-error>
+        </mat-form-field>
+        <br />
+         -->
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Usuario</mat-label>
+          <mat-select formControlName="usuario">
+            <mat-option *ngFor="let p of ListaUsuarios" [value]="p.usuarioNombre">
+              {{p.usuarioNombre}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="obtenerControlCampo('usuario')?.errors?.['required']">
+            El usuario es obligatorio.
+          </mat-error>
+        </mat-form-field>
+        <br />
+        <button mat-raised-button color="primary">Aceptar</button>
+        <button mat-raised-button color="warn" routerLink="/usuario">
+          Cancelar
+        </button>
+        <p>{{ mensaje }}</p>
+
+
+      </form>
+
+    </div>
+</body>
+</html>
