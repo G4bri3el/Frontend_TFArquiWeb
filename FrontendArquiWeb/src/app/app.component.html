@@ -1,6 +1,7 @@
 <mat-toolbar color="primary">
   <mat-icon>menu</mat-icon>
   <button mat-button [matMenuTriggerFor]="menuUsuarios">Usuarios</button>
+  <button mat-button [matMenuTriggerFor]="menuReservas">Reservas</button>
   <button mat-button [matMenuTriggerFor]="menuLocales">Locales</button>
 </mat-toolbar>
 
@@ -9,6 +10,12 @@
   <button mat-menu-item routerLink="/usuario/empresario">Registro Empresario</button>
   <button mat-menu-item routerLink="/usuario">Listar</button>
 
+  <!-- Agrega más elementos de menú si es necesario -->
+</mat-menu>
+
+<mat-menu #menuReservas="matMenu">
+  <button mat-menu-item routerLink="/reserva/nuevo">Registrar Reservas</button>
+  <button mat-menu-item routerLink="/reserva">Listar Reservas</button>
   <!-- Agrega más elementos de menú si es necesario -->
 </mat-menu>
 
