@@ -8,13 +8,19 @@ import { UsuarioComponent } from './components/usuario/usuario.component';
 import { LocalComponent } from './components/local/local.component';
 import { CreaeditaUsuarioComponent } from './components/usuario/creaedita-usuario/creaedita-usuario.component';
 import { MaterialModule } from './material/material.module';
+import { ReservaComponent } from './components/reserva/reserva.component';
+import { CreaeditaReservaComponent } from './components/reserva/creaedita-reserva/creaedita-reserva.component';
+import { ListarReservaComponent } from './components/reserva/listar-reserva/listar-reserva.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsuarioComponent,
     LocalComponent,
-    CreaeditaUsuarioComponent
+    CreaeditaUsuarioComponent,
+    ReservaComponent,
+    CreaeditaReservaComponent,
+    ListarReservaComponent
   ],
   imports: [
     BrowserModule,
