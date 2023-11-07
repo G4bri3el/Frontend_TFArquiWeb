@@ -9,6 +9,8 @@ import { LoginComponent } from './components/login/login.component';
 import { LocalComponent } from './components/local/local.component';
 import { CreaeditaLocalComponent } from './components/local/creaedita-local/creaedita-local.component';
 import { CreaeditaEmpresarioComponent } from './components/usuario/creaedita-empresario/creaedita-empresario.component';
+import { ReservaComponent } from './components/reserva/reserva.component';
+import { CreaeditaReservaComponent } from './components/reserva/creaedita-reserva/creaedita-reserva.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -30,6 +32,12 @@ const routes: Routes = [
     path: 'local', component: LocalComponent,
     children: [{
       path: 'nuevo', component: CreaeditaLocalComponent }],
+  },
+  {
+    path:'reserva', component:ReservaComponent,
+    children: [
+      {path:'nuevo', component:CreaeditaReservaComponent}
+    ]
   }
 ];
 

@@ -18,6 +18,11 @@ import { CreaeditaLocalComponent } from './components/local/creaedita-local/crea
 import { ListarLocalComponent } from './components/local/listar-local/listar-local.component';
 import { ImageUploadComponent } from './components/image-upload/image-upload.component';
 import { CreaeditaEmpresarioComponent } from './components/usuario/creaedita-empresario/creaedita-empresario.component';
+import { ReservaComponent } from './components/reserva/reserva.component';
+import { CreaeditaReservaComponent } from './components/reserva/creaedita-reserva/creaedita-reserva.component';
+import { ListarReservaComponent } from './components/reserva/listar-reserva/listar-reserva.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +39,9 @@ import { CreaeditaEmpresarioComponent } from './components/usuario/creaedita-emp
     ListarLocalComponent,
     ImageUploadComponent,
     CreaeditaEmpresarioComponent,
+    ReservaComponent,
+    CreaeditaReservaComponent,
+    ListarReservaComponent,
   ],
   imports: [
     BrowserModule,
