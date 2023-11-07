@@ -6,6 +6,9 @@ import { BicicletaComponent } from './components/bicicleta/bicicleta.component';
 import { CreaeditaBicicletaComponent } from './components/bicicleta/creaedita-bicicleta/creaedita-bicicleta.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
+import { LocalComponent } from './components/local/local.component';
+import { CreaeditaLocalComponent } from './components/local/creaedita-local/creaedita-local.component';
+import { CreaeditaEmpresarioComponent } from './components/usuario/creaedita-empresario/creaedita-empresario.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -15,7 +18,7 @@ const routes: Routes = [
     path: 'usuario', component: UsuarioComponent,
     children: [
       { path: 'nuevo', component: CreaeditaUsuarioComponent },
-      { path: 'empresaio', component: CreaeditaUsuarioComponent },
+      { path: 'empresario', component: CreaeditaEmpresarioComponent },
     ],
   },
   {
@@ -23,6 +26,11 @@ const routes: Routes = [
     children: [{ 
       path: 'nuevo', component: CreaeditaBicicletaComponent }],
   },
+  {
+    path: 'local', component: LocalComponent,
+    children: [{
+      path: 'nuevo', component: CreaeditaLocalComponent }],
+  }
 ];
 
 @NgModule({

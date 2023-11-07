@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="outer-container" style="text-align: center">
+      <mat-card class="example-card">
+        <h2>Registro de Clientes</h2>
+        <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+          <mat-form-field class="example-full-width">
+            <mat-label>Correo</mat-label>
+            <input
+              matInput
+              placeholder="correo@gmail.com"
+              formControlName="usuarioCorreo"
+            />
+          </mat-form-field>
+          <br />
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Contraseña</mat-label>
+            <input
+              matInput
+              placeholder="contraseña"
+              formControlName="usuarioContrasena"
+            />
+          </mat-form-field>
+          <br />
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Telefono</mat-label>
+            <input
+              matInput
+              placeholder="987654321"
+              formControlName="usuarioTelefono"
+            />
+          </mat-form-field>
+          <br />
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Nombre</mat-label>
+            <input
+              matInput
+              placeholder="Nombre"
+              formControlName="usuarioNombre"
+            />
+          </mat-form-field>
+          <br />
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Apellido</mat-label>
+            <input
+              matInput
+              placeholder="Apellido"
+              formControlName="usuarioApellido"
+            />
+          </mat-form-field>
+          <br />
+
+          <mat-form-field class="example-full-width">
+            <mat-label>DNI</mat-label>
+            <input matInput placeholder="Dni" formControlName="usuarioDni" />
+          </mat-form-field>
+          <br />
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Edad</mat-label>
+            <input matInput placeholder="Edad" formControlName="usuarioEdad" />
+          </mat-form-field>
+          <br />
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Ciudad</mat-label>
+            <input
+              matInput
+              placeholder="Ciudad"
+              formControlName="usuarioCiudad"
+            />
+          </mat-form-field>
+          <br />
+          <!--********************* -->
+          <mat-form-field class="example-full-width">
+            <mat-label>Foto</mat-label>
+            <input matInput placeholder="foto" formControlName="usuarioFoto" />
+          </mat-form-field>
+          <br />
+          <mat-form-field class="example-full-width">
+            <mat-label>Razon Social</mat-label>
+            <input matInput placeholder="razon social" formControlName="usuarioRazonsocial" />
+          </mat-form-field>
+          <br />
+          <mat-form-field class="example-full-width">
+            <mat-label>Direccion</mat-label>
+            <input matInput placeholder="direccion" formControlName="usuarioDireccion" />
+          </mat-form-field>
+          <br />
+          <mat-form-field class="example-full-width">
+            <mat-label>RUC</mat-label>
+            <input matInput placeholder="10603645948" formControlName="usuarioRuc" />
+          </mat-form-field>
+          <br />
+
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Rol</mat-label>
+            <mat-select formControlName="roles">
+              <mat-option *ngFor="let p of listaRoles" [value]="p.rolesId">
+                {{ p.rol }}
+              </mat-option>
+            </mat-select>
+            <mat-error
+              *ngIf="obtenerControlCampo('roles')?.errors?.['required']"
+            >
+              El tipo es obligatorio.
+            </mat-error>
+          </mat-form-field>
+          <br />
+          <button mat-raised-button color="primary">Crear Cuenta</button>
+          <button mat-raised-button color="accent" routerLink="/postres">
+            Cancelar
+          </button>
+          <p>{{ mensaje }}</p>
+        </form>
+      </mat-card>
+    </div>
+  </body>
+</html>

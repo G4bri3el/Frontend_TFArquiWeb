@@ -9,11 +9,11 @@ import { Validators } from '@angular/forms';
 import { AbstractControl } from '@angular/forms';
 
 @Component({
-  selector: 'app-creaedita-usuario',
-  templateUrl: './creaedita-usuario.component.html',
-  styleUrls: ['./creaedita-usuario.component.css'],
+  selector: 'app-creaedita-empresario',
+  templateUrl: './creaedita-empresario.component.html',
+  styleUrls: ['./creaedita-empresario.component.css']
 })
-export class CreaeditaUsuarioComponent implements OnInit {
+export class CreaeditaEmpresarioComponent  implements OnInit{
   form: FormGroup = new FormGroup({});
   usuario: Usuario = new Usuario();
   mensaje: string = '';
@@ -34,9 +34,14 @@ export class CreaeditaUsuarioComponent implements OnInit {
       usuarioTelefono: ['', Validators.required],
       usuarioNombre: ['', Validators.required],
       usuarioApellido: ['', Validators.required],
-      usuarioDni: ['',Validators.required, Validators.maxLength(8)],
+      usuarioDni: ['',Validators.required],
       usuarioEdad: ['',Validators.required],
       usuarioCiudad: ['',Validators.required],
+      //-----
+      usuarioFoto: ['',Validators.required],
+      usuarioRazonsocial: ['',Validators.required],
+      usuarioDireccion: ['',Validators.required],
+      usuarioRuc: ['',Validators.required],
       roles: ['',Validators.required],
     });
 
@@ -55,6 +60,12 @@ export class CreaeditaUsuarioComponent implements OnInit {
       this.usuario.usuarioDni = this.form.value.usuarioDni;
       this.usuario.usuarioEdad = this.form.value.usuarioEdad;
       this.usuario.usuarioCiudad = this.form.value.usuarioCiudad;
+      //---------------
+      this.usuario.usuarioFoto = this.form.value.usuarioFoto;
+      this.usuario.usuarioRazonsocial = this.form.value.usuarioRazonsocial;
+      this.usuario.usuarioDireccion = this.form.value.usuarioDireccion;
+      this.usuario.usuarioRuc = this.form.value.usuarioRuc;
+      //----------------
       this.usuario.roles.rolesId = this.form.value.roles;
       
       this.uS.insert(this.usuario).subscribe(data => {

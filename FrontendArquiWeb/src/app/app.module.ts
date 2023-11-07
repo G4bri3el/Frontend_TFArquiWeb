@@ -14,7 +14,10 @@ import { ListarBicicletaComponent } from './components/bicicleta/listar-biciclet
 import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
-
+import { CreaeditaLocalComponent } from './components/local/creaedita-local/creaedita-local.component';
+import { ListarLocalComponent } from './components/local/listar-local/listar-local.component';
+import { ImageUploadComponent } from './components/image-upload/image-upload.component';
+import { CreaeditaEmpresarioComponent } from './components/usuario/creaedita-empresario/creaedita-empresario.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +29,11 @@ import { LoginComponent } from './components/login/login.component';
     ListarBicicletaComponent,
     HomeComponent,
     NavbarComponent,
-    LoginComponent
+    LoginComponent,
+    CreaeditaLocalComponent,
+    ListarLocalComponent,
+    ImageUploadComponent,
+    CreaeditaEmpresarioComponent,
   ],
   imports: [
     BrowserModule,

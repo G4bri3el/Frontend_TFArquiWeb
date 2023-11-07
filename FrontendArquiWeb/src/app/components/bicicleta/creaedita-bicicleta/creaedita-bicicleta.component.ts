@@ -44,7 +44,7 @@ export class CreaeditaBicicletaComponent {
     });
 
     //Local
-    this.lS.listarLocales().subscribe((data) => {
+    this.lS.list().subscribe((data) => {
       this.listaLocales = data;
     });
   }
