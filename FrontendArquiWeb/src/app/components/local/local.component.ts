@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-local',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./local.component.css']
 })
 export class LocalComponent {
+  constructor(public route: ActivatedRoute) {
 
+  }
 }
