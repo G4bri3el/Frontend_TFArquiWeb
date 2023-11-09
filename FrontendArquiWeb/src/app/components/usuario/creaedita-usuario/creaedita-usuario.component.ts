@@ -34,7 +34,7 @@ export class CreaeditaUsuarioComponent implements OnInit {
       usuarioTelefono: ['', Validators.required],
       usuarioNombre: ['', Validators.required],
       usuarioApellido: ['', Validators.required],
-      usuarioDni: ['',Validators.required],
+      usuarioDni: ['',Validators.required, Validators.maxLength(8)],
       usuarioEdad: ['',Validators.required],
       usuarioCiudad: ['',Validators.required],
       roles: ['',Validators.required],

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- NAVBAR -->
+<header class="header" id="header">
+    <div class="logo">
+        <img src="../../../assets/images/logoennegro.jpeg" alt="Logo de la marca Bike and Go">
+    </div>
+
+    <nav>
+        <ul class="nav-links">
+            <li><a href="#our-work">¿Quienes Somos?</a></li>
+            <li><a href="#services">Encuentranos</a></li>
+            <li><a href="#contact">Contáctanos</a></li>
+            <li><a href="#Descarga-app">Descargar</a></li>
+            <li><a href="#footer">Soporte</a></li>
+        </ul>
+    </nav>
+    <a  class="btn"><button  routerLink="/login">Iniciar Sesión</button></a>
+    <a class="btn"><button  routerLink="/usuario/nuevo">Registrate</button></a>
+
+</header>
+
+<!-- END NAVBAR -->
+
+<main>
+    <section id="hero" class="hero">
+        <h1>LAS ÚNICAS CADENAS QUE TE DAN<BR>
+            LIBERTAD SON LAS DE TU BICICLETA
+        </h1>
+
+        <a href="https://www.figma.com/proto/ffLfEWsRl7GJ0nVzsZUjhU/PROTOTYPING?node-id=65%3A713&scaling=min-zoom&page-id=0%3A1&starting-point-node-id=65%3A713" class="btn">Download App</a>
+        <h3>Disponible en AppStore y Playstore</h3>
+    </section>
+
+    <section id="our-work" class="our-work" >
+        <h3 class="title">¿Quienes Somos?</h3>
+        <p>Somos una empresa que promueve el uso de la bicicleta a través del alquiler <br>
+            de las mismas de manera segura, asimismo de plantearla como una alternativa <br>
+            saludable y responsable con el medio ambiente.</p>
+        <hr>
+        <ul class="grid">
+            <img src="assets/images/logoenblanco.jpg" alt="Equipo de UX en una reunión de planificación haciendo uso de materiales para trabajos colaborativos">
+
+        </ul>
+    </section>
+
+    <section id="services" class="services">
+        <h3 class="title">Encuentra tu local de alquiler de bicicletas más cercano</h3>
+        <hr class="blanco">
+
+        <div class="card">
+
+                <div class="contenido">
+                    <h4>Información<br>
+                        Relevante
+                    </h4>
+                    <p>
+                        - A partir del gráfico podrás conocer los diferentes locales que contamos para el alquiler y devolución de bicicletas.<br>
+                        - Horario de atención es de 8 am a 10 pm
+                    </p>
+                    <a href="#">Leer más</a>
+                </div>
+        </div>
+
+        <div class="ubicacion">
+            <div class="search-input-group">
+
+                <div class="input-item light-shadow">
+                    <div class="input-field"><label class="form-label">Por Ciudad</label>
+                        <select data-city="" name="city" id="ciudadSelect" onchange="checkData('City')" class="form-select" style="height: initial;">
+                            <option value="0">¿Dónde?</option>
+                            <option value="1">Lima</option>
+                            <option value="2">Arequipa</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="input-item light-shadow">
+                    <div class="input-field"><label class="form-label">Por Local</label>
+                        <select data-local="" name="local" id="localSelect" onchange="checkData('Local')" class="form-select" style="height: initial;">
+                            <option value="0" selected="">¿En qué local?</option>
+                            <option value="1">PuntoBike</option>
+                            <option value="2">TecBike</option>
+                            <option value="2">Bicicleta Feliz</option>
+                        </select></div>
+                </div>
+
+            </div>
+            <div>
+                <button class="btn" type="submit" name="submit">BUSCAR</button>
+            </div>
+        </div>
+
+        <div class="mapa">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3074.486083532856!2d-77.0398432988429!3d-12.065574971636739!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c9bfdc458615%3A0x68f50d0e8d47a3eb!2sPuntoBike!5e0!3m2!1ses!2spe!4v1668729554532!5m2!1ses!2spe" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+
+
+
+    <section id="contact" class="contact">
+        <h3 class="title">Contacta con Nosotros</h3>
+        <p>Por favor, comparta su dirección de correo electrónico con nosotros. Algunos de nuestros representantes se comunicarán con usted pronto.</p>
+        <hr>
+        <form>
+            <input type="email" name="mailcontact" id="mail_contact" placeholder="Email">
+            <a href="#" class="btn">Submit</a>
+        </form>
+    </section>
+
+    <section id="Descarga-app" class="descarga-app">
+        <h3 class="title">
+            Entonces, ¿Qué estas esperando?
+        </h3>
+        <p>Descarga ya! Y empieza a utilizar todo los que<br>
+            tenemos preparado para ti totalmente gratis.</p>
+        <img src="assets/images/imagendescarga.png" alt="imagen logo de Playstore y Appstore">
+    </section>
+</main>
+
+<footer id="footer">
+    <img src="assets/images/logo_transparente.png" alt="imagen logo de la startup">
+        <div class="social-icons-container">
+            <a href="" class="social-icons"></a>
+            <a href="" class="social-icons"></a>
+            <a href="" class="social-icons"></a>
+            <a href="" class="social-icons"></a>
+        </div>
+    <ul class="footer-menu-container">
+        <li class="menu-item"><a href="#header">Inicio</a></li>
+        <li class="menu-item"><a href="#our-work">¿Quienes Somos?</a></li>
+        <li class="menu-item"><a href="#services">Encuentranos</a></li>
+        <li class="menu-item"><a href="#contact">Contactanos</a></li>
+        <li class="menu-item"><a href="#Descarga-app">Descargar</a></li>
+        <li class="menu-item"><a href="#footer">Soporte</a></li>
+    </ul>
+    <span class="copyright">&copy;2022, Bike ang Go. All rights reserved. We love our users!</span>
+
+</footer>
+</body>
+</html>

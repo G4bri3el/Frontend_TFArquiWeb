@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="outer-container" style="text-align: left">
+      <mat-card class="example-card">
+        <h2>Iniciar Sesión</h2>
+        <br />
+        <h5>Usuario</h5>
+        <mat-form-field class="example-full-width">
+          <mat-label>Usuario</mat-label>
+          <input
+            matInput
+            placeholder="usuario"
+            [(ngModel)]="username"
+          />
+        </mat-form-field>
+        <br />
+
+        <h5>Constraseña</h5>
+        <mat-form-field class="example-full-width">
+          <mat-label>Contraseña</mat-label>
+          <input
+            type="password"
+            matInput
+            placeholder="contraseña"
+            [(ngModel)]="password"
+          />
+        </mat-form-field>
+        <br />
+        <a>¿Has olvidado tu contraseña?</a>
+        <button mat-raised-button color="primary" (click)="login()">Ingresar</button>
+        <p>{{ mensaje }}</p>
+      </mat-card>
+    </div>
+  </body>
+</html>
