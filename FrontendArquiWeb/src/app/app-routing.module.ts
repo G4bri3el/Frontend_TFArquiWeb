@@ -9,6 +9,7 @@ const routes: Routes = [
   {
     path: 'usuario', component: UsuarioComponent, children:[
       {path:'nuevo',component:CreaeditaUsuarioComponent},
+      {path:'empresaio', component:CreaeditaUsuarioComponent},
     ]
   },
   {
