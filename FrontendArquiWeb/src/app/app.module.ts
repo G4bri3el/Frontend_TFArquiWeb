@@ -24,6 +24,7 @@ import { ListarReservaComponent } from './components/reserva/listar-reserva/list
 
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RegistroComponent } from './components/registro/registro.component';
+import {MatCardModule} from '@angular/material/card';
 
 
 @NgModule({
@@ -53,6 +54,7 @@ import { RegistroComponent } from './components/registro/registro.component';
     BrowserAnimationsModule,
     MaterialModule,
     MatSnackBarModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
