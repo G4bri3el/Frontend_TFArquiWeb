@@ -27,8 +27,9 @@ const routes: Routes = [
   },
   {
     path: 'bicicleta', component: BicicletaComponent,
-    children: [{ 
-      path: 'nuevo', component: CreaeditaBicicletaComponent }],
+    children: [
+      { path: 'nuevo', component: CreaeditaBicicletaComponent },
+      { path: 'edicion/:id', component:CreaeditaBicicletaComponent}],
   },
   {
     path: 'local', component: LocalComponent,

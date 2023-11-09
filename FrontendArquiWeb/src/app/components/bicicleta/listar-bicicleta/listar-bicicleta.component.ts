@@ -12,7 +12,7 @@ import { BicicletaService } from 'src/app/service/bicicleta/bicicleta.service';
 export class ListarBicicletaComponent {
   dataSource: MatTableDataSource<Bicicleta> = new MatTableDataSource();
   displayedColumns: string[] =
-  ['codigo', 'modelo', 'estado', 'precio', 'numaro', 'detalles', 'foto', 'local', 'eliminar'];
+  ['codigo', 'modelo', 'estado', 'precio', 'numaro', 'detalles', 'foto', 'local', 'eliminar', 'editar'];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   constructor(private bS: BicicletaService) {}
 

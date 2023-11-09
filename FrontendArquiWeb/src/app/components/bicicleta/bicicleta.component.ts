@@ -11,5 +11,5 @@ export class BicicletaComponent {
   constructor(public route: ActivatedRoute) { }
   ngOnInit(): void {}
 
-  
+
 }
