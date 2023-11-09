@@ -1,12 +1,12 @@
-import { Roles } from './../../../model/roles';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { RolesService } from 'src/app/service/roles/roles.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Usuario } from 'src/app/model/usuario';
 import { UsuarioService } from 'src/app/service/usuario/usuario.service';
 import { Validators } from '@angular/forms';
 import { AbstractControl } from '@angular/forms';
+
+import * as bcryptjs from 'bcryptjs';
 
 @Component({
   selector: 'app-creaedita-usuario',
@@ -18,10 +18,10 @@ export class CreaeditaUsuarioComponent implements OnInit {
   usuario: Usuario = new Usuario();
   mensaje: string = '';
 
-  listaRoles: Roles[] = [];
+  visible: boolean = true;
+  changetype: boolean = true;
 
   constructor(
-    private rS: RolesService,
     private router: Router,
     private formBuilder: FormBuilder,
     private uS: UsuarioService
@@ -34,28 +34,25 @@ export class CreaeditaUsuarioComponent implements OnInit {
       usuarioTelefono: ['', Validators.required],
       usuarioNombre: ['', Validators.required],
       usuarioApellido: ['', Validators.required],
-      usuarioDni: ['',Validators.required, Validators.maxLength(8)],
+      usuarioDni: ['',Validators.required],
       usuarioEdad: ['',Validators.required],
       usuarioCiudad: ['',Validators.required],
-      roles: ['',Validators.required],
-    });
-
-    this.rS.listarRoles().subscribe((data) => {
-      this.listaRoles = data;
     });
   }
 
   aceptar(): void{
+    let contraEncrypt: string = bcryptjs.hashSync(this.form.value.usuarioContrasena, 12);
+
     if(this.form.valid){
       this.usuario.usuarioCorreo = this.form.value.usuarioCorreo;
-      this.usuario.usuarioContrasena = this.form.value.usuarioContrasena;
+      this.usuario.usuarioContrasena = contraEncrypt;
       this.usuario.usuarioTelefono = this.form.value.usuarioTelefono;
       this.usuario.usuarioNombre = this.form.value.usuarioNombre;
       this.usuario.usuarioApellido = this.form.value.usuarioApellido;
       this.usuario.usuarioDni = this.form.value.usuarioDni;
       this.usuario.usuarioEdad = this.form.value.usuarioEdad;
       this.usuario.usuarioCiudad = this.form.value.usuarioCiudad;
-      this.usuario.roles.rolesId = this.form.value.roles;
+      this.usuario.roles.rolesId = 2;
       
       this.uS.insert(this.usuario).subscribe(data => {
         this.uS.list().subscribe(lista => {
@@ -63,7 +60,7 @@ export class CreaeditaUsuarioComponent implements OnInit {
         });
       });
 
-      this.router.navigate(['usuario']);
+      this.router.navigate(['login']);
     }else{
       this.mensaje = 'Por favor complete todos los campos obligatorios.';
     }
@@ -75,5 +72,10 @@ export class CreaeditaUsuarioComponent implements OnInit {
       throw new Error(`Control no encontrado para el campo ${nombreCampo}`);
     }
     return control;
+  }
+
+  viewpassword(){
+    this.visible = !this.visible;
+    this.changetype = !this.changetype; 
   }
 }

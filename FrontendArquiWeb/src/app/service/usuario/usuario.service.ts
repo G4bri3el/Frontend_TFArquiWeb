@@ -1,6 +1,6 @@
 import { Usuario } from './../../model/usuario';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment.development';
 import { Subject } from 'rxjs';
 
@@ -15,7 +15,13 @@ export class UsuarioService {
   constructor(private http: HttpClient) { }
 
   list(){
-    return this.http.get<Usuario[]>(this.url);
+    let token = sessionStorage.getItem('token');
+
+    return this.http.get<Usuario[]>(this.url, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
   insert(u: Usuario){
     return this.http.post(`${this.url}/signup`, u);

@@ -1,8 +1,8 @@
 
 <mat-toolbar color="primary" *ngIf="verificar()">
     <mat-icon>menu</mat-icon>
-    <button mat-button [matMenuTriggerFor]="menuUsuarios">Usuarios</button>
-    <button mat-button [matMenuTriggerFor]="menuLocales" *ngIf="validarRol('ADMIN')">Locales</button>
+    <button mat-button [matMenuTriggerFor]="menuUsuarios" *ngIf="validarRol('ADMIN')">Usuarios</button>
+    <button mat-button [matMenuTriggerFor]="menuLocales" *ngIf="validarRol('ADMIN') || validarRol('EMPRESARIO')">Locales</button>
     <button mat-button [matMenuTriggerFor]="menuBicicletas">Bicicleta</button>
     <button mat-button [matMenuTriggerFor]="menuReserva">Reserva</button>
     
@@ -25,7 +25,7 @@
   </mat-menu>
   
   <mat-menu #menuBicicletas="matMenu">
-    <button mat-menu-item routerLink="/bicicleta/nuevo">Registrar Bicicleta</button>
+    <button mat-menu-item routerLink="/bicicleta/nuevo" *ngIf="validarRol('ADMIN') || validarRol('EMPRESARIO')">Registrar Bicicleta</button>
     <button mat-menu-item routerLink="/bicicleta">Listar Bicicletas</button>
     <!-- Agrega más elementos de menú si es necesario -->
   </mat-menu>

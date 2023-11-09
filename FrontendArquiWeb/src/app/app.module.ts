@@ -23,6 +23,7 @@ import { CreaeditaReservaComponent } from './components/reserva/creaedita-reserv
 import { ListarReservaComponent } from './components/reserva/listar-reserva/listar-reserva.component';
 
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { RegistroComponent } from './components/registro/registro.component';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     ReservaComponent,
     CreaeditaReservaComponent,
     ListarReservaComponent,
+    RegistroComponent,
   ],
   imports: [
     BrowserModule,

@@ -22,13 +22,17 @@
 
           <mat-form-field class="example-full-width">
             <mat-label>Contraseña</mat-label>
-            <input
-              matInput
-              placeholder="contraseña"
-              formControlName="usuarioContrasena"
-            />
+            <div class="contra-group">
+              <input
+                [type]="changetype?'password':'text'"
+                matInput
+                placeholder="contraseña"
+                formControlName="usuarioContrasena"
+              />
+              <span class="eye-icon" (click)="viewpassword()"><i [ngClass]="visible?'fa-regular fa-eye':'fa-regular fa-eye-slash'"></i></span>
+            </div>
           </mat-form-field>
-          <br />
+          <br />  
 
           <mat-form-field class="example-full-width">
             <mat-label>Telefono</mat-label>
@@ -82,22 +86,8 @@
           </mat-form-field>
           <br />
 
-          <mat-form-field class="example-full-width">
-            <mat-label>Rol</mat-label>
-            <mat-select formControlName="roles">
-              <mat-option *ngFor="let p of listaRoles" [value]="p.rolesId">
-                {{ p.rol }}
-              </mat-option>
-            </mat-select>
-            <mat-error
-              *ngIf="obtenerControlCampo('roles')?.errors?.['required']"
-            >
-              El tipo es obligatorio.
-            </mat-error>
-          </mat-form-field>
-          <br />
           <button mat-raised-button color="primary">Crear Cuenta</button>
-          <button mat-raised-button color="accent" routerLink="/postres">
+          <button mat-raised-button color="accent" routerLink="/registro">
             Cancelar
           </button>
           <p>{{ mensaje }}</p>
