@@ -24,7 +24,7 @@ import { ListarReservaComponent } from './components/reserva/listar-reserva/list
 
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RegistroComponent } from './components/registro/registro.component';
-
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +46,7 @@ import { RegistroComponent } from './components/registro/registro.component';
     CreaeditaReservaComponent,
     ListarReservaComponent,
     RegistroComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,
