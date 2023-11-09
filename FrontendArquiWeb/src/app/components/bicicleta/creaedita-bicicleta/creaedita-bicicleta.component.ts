@@ -49,7 +49,6 @@ export class CreaeditaBicicletaComponent {
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       bicicletamodelo: ['', Validators.required],
-      bicicletaestado: ['', Validators.required],
       bicicletaprecio: ['', [Validators.required, Validators.pattern(/^(?!0\d)\d+(\.\d+)?$/)],], // Acepta números enteros o decimales que no comiencen con cero
       bicicletanumaro: ['', Validators.required],
       bicicletadetalles: ['', Validators.required],
@@ -66,7 +65,6 @@ export class CreaeditaBicicletaComponent {
   aceptar(): void {
     if (this.form.valid) {
       this.bici.bicicletamodelo = this.form.value.bicicletamodelo;
-      this.bici.bicicletaestado = this.form.value.bicicletaestado;
       this.bici.bicicletaprecio = this.form.value.bicicletaprecio;
       this.bici.bicicletanumaro = this.form.value.bicicletanumaro;
       this.bici.bicicletadetalles = this.form.value.bicicletadetalles;

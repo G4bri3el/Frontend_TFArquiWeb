@@ -23,17 +23,6 @@
         <br />
 
         <mat-form-field class="example-full-width">
-          <mat-label>Estado</mat-label>
-          <mat-select formControlName="bicicletaestado">
-            <!--- valor / vista de bicicleta -->
-            <mat-option *ngFor="let p of tiposestado" [value]="p.value">{{
-              p.viewValue
-            }}</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <br />
-
-        <mat-form-field class="example-full-width">
           <mat-label>Precio</mat-label>
           <input
             matInput
