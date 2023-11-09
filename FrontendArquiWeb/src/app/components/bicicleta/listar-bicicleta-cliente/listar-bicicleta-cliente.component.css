@@ -26,3 +26,8 @@
   }
 }
 
+
+.example-header-image {
+  background-image: url('https://img.freepik.com/fotos-premium/textura-papel-turquesa-motas-ruido_469558-22423.jpg');
+  background-size: cover;
+}
