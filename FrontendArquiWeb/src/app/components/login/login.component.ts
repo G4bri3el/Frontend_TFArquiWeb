@@ -1,8 +1,9 @@
+import { LoginService } from './../../service/login/login.service';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Usuario } from 'src/app/model/usuario';
-import { UsuarioService } from 'src/app/service/usuario/usuario.service';
+
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { JwtRequest } from './../../model/jwtRequest';
 
 @Component({
   selector: 'app-login',
@@ -10,26 +11,29 @@ import { UsuarioService } from 'src/app/service/usuario/usuario.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  form: FormGroup = new FormGroup({});
-  usuario: Usuario = new Usuario();
+  username: string= '';
+  password: string = '';
   mensaje: string = '';
 
   constructor(
+    private loginService: LoginService,
     private router: Router,
-    private formBuilder: FormBuilder,
-    private uS: UsuarioService
+    private snackBar: MatSnackBar,
   ) {}
 
   ngOnInit(): void {
-    this.form = this.formBuilder.group({
-      usuarioCorreo: ['',Validators.required],
-      usuarioContrasena: ['',Validators.required],
-    });
   }
-  aceptar(): void {
-
-
-
-    this.router.navigate(['usuario']);
+  
+  login() {
+    let request = new JwtRequest();
+    request.username = this.username;
+    request.password = this.password;
+    this.loginService.login(request).subscribe((data: any) => {
+      sessionStorage.setItem("token",data.jwttoken);
+      this.router.navigate(['usuario']);
+    }, error => {
+      this.mensaje= "Credenciales incorrectas"
+      this.snackBar.open(this.mensaje, '', {duration: 2000});
+    });
   }
 }

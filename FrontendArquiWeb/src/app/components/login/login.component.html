@@ -9,32 +9,32 @@
     <div class="outer-container" style="text-align: left">
       <mat-card class="example-card">
         <h2>Iniciar Sesión</h2>
-        <br/>
-        <form [formGroup]="form" (submit)="aceptar()" class="example-form">
-          <h5>Correo Electronico o nombre de usuario</h5>
-          <mat-form-field class="example-full-width">
-            <mat-label>Correo</mat-label>
-            <input
-              matInput
-              placeholder="correo@gmail.com"
-              formControlName="usuarioCorreo"
-            />
-          </mat-form-field>
-          <br />
-          <h5>Constraseña</h5>
-          <mat-form-field class="example-full-width">
-            <mat-label>Contraseña</mat-label>
-            <input
-              matInput
-              placeholder="contraseña"
-              formControlName="usuarioContrasena"
-            />
-          </mat-form-field>
-          <br />
-          <a>¿Has olvidado tu contraseña?</a>
-          <button mat-raised-button color="primary">Iniciar Sesion</button>
-          <p>{{ mensaje }}</p>
-        </form>
+        <br />
+        <h5>Usuario</h5>
+        <mat-form-field class="example-full-width">
+          <mat-label>Usuario</mat-label>
+          <input
+            matInput
+            placeholder="usuario"
+            [(ngModel)]="username"
+          />
+        </mat-form-field>
+        <br />
+
+        <h5>Constraseña</h5>
+        <mat-form-field class="example-full-width">
+          <mat-label>Contraseña</mat-label>
+          <input
+            type="password"
+            matInput
+            placeholder="contraseña"
+            [(ngModel)]="password"
+          />
+        </mat-form-field>
+        <br />
+        <a>¿Has olvidado tu contraseña?</a>
+        <button mat-raised-button color="primary" (click)="login()">Ingresar</button>
+        <p>{{ mensaje }}</p>
       </mat-card>
     </div>
   </body>

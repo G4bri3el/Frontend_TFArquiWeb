@@ -22,6 +22,8 @@ import { ReservaComponent } from './components/reserva/reserva.component';
 import { CreaeditaReservaComponent } from './components/reserva/creaedita-reserva/creaedita-reserva.component';
 import { ListarReservaComponent } from './components/reserva/listar-reserva/listar-reserva.component';
 
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 @NgModule({
   declarations: [
@@ -48,6 +50,7 @@ import { ListarReservaComponent } from './components/reserva/listar-reserva/list
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
