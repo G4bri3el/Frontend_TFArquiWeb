@@ -26,6 +26,7 @@ import { ListarBicicletaClienteComponent } from './components/bicicleta/listar-b
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RegistroComponent } from './components/registro/registro.component';
 import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { MatCardModule } from '@angular/material/card';
     BrowserAnimationsModule,
     MaterialModule,
     MatSnackBarModule,
-    MatCardModule
+    MatCardModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
