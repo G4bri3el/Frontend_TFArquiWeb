@@ -23,6 +23,7 @@
           <mat-form-field class="example-full-width">
             <mat-label>Contraseña</mat-label>
             <input
+              type="password"
               matInput
               placeholder="contraseña"
               formControlName="usuarioContrasena"
@@ -103,23 +104,8 @@
           </mat-form-field>
           <br />
 
-
-          <mat-form-field class="example-full-width">
-            <mat-label>Rol</mat-label>
-            <mat-select formControlName="roles">
-              <mat-option *ngFor="let p of listaRoles" [value]="p.rolesId">
-                {{ p.rol }}
-              </mat-option>
-            </mat-select>
-            <mat-error
-              *ngIf="obtenerControlCampo('roles')?.errors?.['required']"
-            >
-              El tipo es obligatorio.
-            </mat-error>
-          </mat-form-field>
-          <br />
           <button mat-raised-button color="primary">Crear Cuenta</button>
-          <button mat-raised-button color="accent" routerLink="/postres">
+          <button mat-raised-button color="accent" routerLink="/registro">
             Cancelar
           </button>
           <p>{{ mensaje }}</p>

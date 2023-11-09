@@ -8,6 +8,8 @@ import { UsuarioService } from 'src/app/service/usuario/usuario.service';
 import { Validators } from '@angular/forms';
 import { AbstractControl } from '@angular/forms';
 
+import * as bcryptjs from 'bcryptjs';
+
 @Component({
   selector: 'app-creaedita-empresario',
   templateUrl: './creaedita-empresario.component.html',
@@ -17,8 +19,6 @@ export class CreaeditaEmpresarioComponent  implements OnInit{
   form: FormGroup = new FormGroup({});
   usuario: Usuario = new Usuario();
   mensaje: string = '';
-
-  listaRoles: Roles[] = [];
 
   constructor(
     private rS: RolesService,
@@ -42,18 +42,15 @@ export class CreaeditaEmpresarioComponent  implements OnInit{
       usuarioRazonsocial: ['',Validators.required],
       usuarioDireccion: ['',Validators.required],
       usuarioRuc: ['',Validators.required],
-      roles: ['',Validators.required],
-    });
-
-    this.rS.listarRoles().subscribe((data) => {
-      this.listaRoles = data;
     });
   }
 
   aceptar(): void{
+    let contraEncrypt: string = bcryptjs.hashSync(this.form.value.usuarioContrasena, 12);
+
     if(this.form.valid){
       this.usuario.usuarioCorreo = this.form.value.usuarioCorreo;
-      this.usuario.usuarioContrasena = this.form.value.usuarioContrasena;
+      this.usuario.usuarioContrasena = contraEncrypt;
       this.usuario.usuarioTelefono = this.form.value.usuarioTelefono;
       this.usuario.usuarioNombre = this.form.value.usuarioNombre;
       this.usuario.usuarioApellido = this.form.value.usuarioApellido;
@@ -66,7 +63,7 @@ export class CreaeditaEmpresarioComponent  implements OnInit{
       this.usuario.usuarioDireccion = this.form.value.usuarioDireccion;
       this.usuario.usuarioRuc = this.form.value.usuarioRuc;
       //----------------
-      this.usuario.roles.rolesId = this.form.value.roles;
+      this.usuario.roles.rolesId = 3;
       
       this.uS.insert(this.usuario).subscribe(data => {
         this.uS.list().subscribe(lista => {
@@ -74,7 +71,7 @@ export class CreaeditaEmpresarioComponent  implements OnInit{
         });
       });
 
-      this.router.navigate(['usuario']);
+      this.router.navigate(['login']);
     }else{
       this.mensaje = 'Por favor complete todos los campos obligatorios.';
     }

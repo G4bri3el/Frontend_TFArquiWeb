@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { Local } from 'src/app/model/local';
 
@@ -15,10 +15,22 @@ export class LocalService {
   private listaCambio = new Subject<Local[]>();
   constructor(private http: HttpClient) { }
   list() {
-    return this.http.get<Local[]>(this.url);
+    let token = sessionStorage.getItem('token');
+
+    return this.http.get<Local[]>(this.url, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
   insert(i: Local) {
-    return this.http.post(this.url, i);
+    let token = sessionStorage.getItem('token');
+
+    return this.http.post(this.url, i, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
   setList(listaNueva: Local[]) {
     this.listaCambio.next(listaNueva);

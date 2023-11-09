@@ -23,7 +23,13 @@ export class BicicletaService {
     });
   }
   insert(bi: Bicicleta) {
-    return this.http.post(this.url, bi);
+    let token = sessionStorage.getItem('token');
+
+    return this.http.post(this.url, bi, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
 
   setList(listaNueva: Bicicleta[]) {
@@ -35,13 +41,32 @@ export class BicicletaService {
   }
 
   listId(id: number) {
-    return this.http.get<Bicicleta>(`${this.url}/${id}`);
+    let token = sessionStorage.getItem('token');
+
+    return this.http.get<Bicicleta>(`${this.url}/${id}`, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
+
   update(b: Bicicleta) {
-    return this.http.put(this.url, b);
+    let token = sessionStorage.getItem('token');
+
+    return this.http.put(this.url, b, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
 
   delete(id: number) {
-    return this.http.delete(`${this.url}/${id}`);
+    let token = sessionStorage.getItem('token');
+
+    return this.http.delete(`${this.url}/${id}`, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
 }

@@ -1,5 +1,5 @@
 import { MatListModule } from '@angular/material/list';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
 import { Roles } from 'src/app/model/roles';
@@ -13,6 +13,12 @@ export class RolesService {
   constructor(private http: HttpClient) { }
 
   listarRoles() {
-    return this.http.get<Roles[]>(this.url);
+    let token = sessionStorage.getItem('token');
+
+    return this.http.get<Roles[]>(this.url, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
 }

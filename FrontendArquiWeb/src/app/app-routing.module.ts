@@ -11,9 +11,11 @@ import { CreaeditaLocalComponent } from './components/local/creaedita-local/crea
 import { CreaeditaEmpresarioComponent } from './components/usuario/creaedita-empresario/creaedita-empresario.component';
 import { ReservaComponent } from './components/reserva/reserva.component';
 import { CreaeditaReservaComponent } from './components/reserva/creaedita-reserva/creaedita-reserva.component';
+import { RegistroComponent } from './components/registro/registro.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'registro', component: RegistroComponent},
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent},
   {

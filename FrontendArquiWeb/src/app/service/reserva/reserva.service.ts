@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Reserva } from 'src/app/model/reserva';
@@ -15,10 +15,22 @@ export class ReservaService {
   constructor(private http:HttpClient) {}
 
   list() {
-    return this.http.get<Reserva[]>(this.url);
+    let token = sessionStorage.getItem('token');
+
+    return this.http.get<Reserva[]>(this.url, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
   insert(r: Reserva) {
-    return this.http.post(this.url, r);
+    let token = sessionStorage.getItem('token');
+
+    return this.http.post(this.url, r, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
   setList(listaNueva: Reserva[]) {
     this.listaCambio.next(listaNueva);
