@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Bicicleta } from 'src/app/model/bicicleta';
 import { Local } from 'src/app/model/local';
@@ -9,16 +15,25 @@ import { LocalService } from 'src/app/service/local/local.service';
 @Component({
   selector: 'app-creaedita-bicicleta',
   templateUrl: './creaedita-bicicleta.component.html',
-  styleUrls: ['./creaedita-bicicleta.component.css']
+  styleUrls: ['./creaedita-bicicleta.component.css'],
 })
 export class CreaeditaBicicletaComponent {
   form: FormGroup = new FormGroup({});
   bici: Bicicleta = new Bicicleta();
   mensaje: string = '';
- 
+
   tiposestado: { value: boolean; viewValue: string }[] = [
     { value: true, viewValue: 'Disponible' },
     { value: false, viewValue: 'No disponible' },
+  ];
+
+  numerodearos: { value: number; viewValue: number }[] = [
+    { value: 12, viewValue: 12 },
+    { value: 16, viewValue: 16 },
+    { value: 20, viewValue: 20 },
+    { value: 24, viewValue: 24 },
+    { value: 26, viewValue: 26 },
+    { value: 29, viewValue: 29 },
   ];
 
   listaLocales: Local[] = [];
@@ -29,14 +44,13 @@ export class CreaeditaBicicletaComponent {
     private formBuilder: FormBuilder,
     private bS: BicicletaService,
     private route: ActivatedRoute
-
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      bicicletamodelo: ['', Validators.required], 
+      bicicletamodelo: ['', Validators.required],
       bicicletaestado: ['', Validators.required],
-      bicicletaprecio: ['', Validators.required],
+      bicicletaprecio: ['', [Validators.required, Validators.pattern(/^(?!0\d)\d+(\.\d+)?$/)],], // Acepta números enteros o decimales que no comiencen con cero
       bicicletanumaro: ['', Validators.required],
       bicicletadetalles: ['', Validators.required],
       bicicletafoto: ['', Validators.required],
@@ -59,14 +73,14 @@ export class CreaeditaBicicletaComponent {
       this.bici.bicicletafoto = this.form.value.bicicletafoto;
       this.bici.local.localid = this.form.value.local;
 
-      this.bS.insert(this.bici).subscribe(data => {
-        this.bS.list().subscribe(lista => {
+      this.bS.insert(this.bici).subscribe((data) => {
+        this.bS.list().subscribe((lista) => {
           this.bS.setList(lista);
         });
       });
 
       this.router.navigate(['bicicleta']);
-    }else{
+    } else {
       this.mensaje = 'Por favor complete todos los campos obligatorios.';
     }
   }
@@ -79,5 +93,8 @@ export class CreaeditaBicicletaComponent {
     return control;
   }
 
-
+  onInputChange(event: any) { //evento que no permite escribir letras en campos numericos
+    const input = event.target.value;
+    event.target.value = input.replace(/[^0-9.]/g, ''); // permite escribir números y el punto decimal
+  }
 }

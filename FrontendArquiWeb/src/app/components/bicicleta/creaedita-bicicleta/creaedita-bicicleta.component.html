@@ -1,74 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="container" style="text-align: center">
+      <br />
+      <h2>Registro de bicicletas</h2>
 
-        <br>
-        <h2>Registro de bicicletas</h2>
+      <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+        <mat-form-field class="example-full-width">
+          <mat-label>Modelo</mat-label>
+          <input
+            matInput
+            placeholder="Modelo"
+            formControlName="bicicletamodelo"
+          />
+        </mat-form-field>
+        <br />
 
-        <form [formGroup]="form" (submit)="aceptar()" class="example-form" >
+        <mat-form-field class="example-full-width">
+          <mat-label>Estado</mat-label>
+          <mat-select formControlName="bicicletaestado">
+            <!--- valor / vista de bicicleta -->
+            <mat-option *ngFor="let p of tiposestado" [value]="p.value">{{
+              p.viewValue
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br />
 
-            <mat-form-field class="example-full-width">
-                <mat-label>Modelo</mat-label>
-                <input matInput placeholder="Modelo" formControlName="bicicletamodelo" />
-            </mat-form-field>
-            <br />
+        <mat-form-field class="example-full-width">
+          <mat-label>Precio</mat-label>
+          <input
+            matInput
+            placeholder="Precio"
+            formControlName="bicicletaprecio"
+            (input)="onInputChange($event)"
+          />
+        </mat-form-field>
+        <br />
 
-            <mat-form-field class="example-full-width">
-                <mat-label>Estado</mat-label>
-                <mat-select formControlName="bicicletaestado">
-                  <!--- valor / vista de bicicleta -->
-                  <mat-option *ngFor="let p of tiposestado" [value]="p.value">{{p.viewValue}}</mat-option>
-                </mat-select>
-            </mat-form-field>
-            <br />
-       
-            <mat-form-field class="example-full-width">
-                <mat-label>Precio</mat-label>
-                <input matInput placeholder="Precio" formControlName="bicicletaprecio" />
-            </mat-form-field>
-            <br />
+        <mat-form-field class="example-full-width">
+          <mat-label>N° de aro</mat-label>
+          <mat-select formControlName="bicicletanumaro">
+            <!--- valor / vista de bicicleta -->
+            <mat-option *ngFor="let p of numerodearos" [value]="p.value">{{
+              p.viewValue
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br />
 
-            <mat-form-field class="example-full-width">
-                <mat-label>Número de aro</mat-label>
-                <input matInput placeholder="Número de aro" formControlName="bicicletanumaro" />
-            </mat-form-field>
-            <br />
+        <mat-form-field class="example-full-width">
+          <mat-label>Detalles</mat-label>
+          <input
+            matInput
+            placeholder="Detalles"
+            formControlName="bicicletadetalles"
+          />
+        </mat-form-field>
+        <br />
 
-            <mat-form-field class="example-full-width">
-                <mat-label>Detalles</mat-label>
-                <input matInput placeholder="Detalles" formControlName="bicicletadetalles" />
-            </mat-form-field>
-            <br />
+        <mat-form-field class="example-full-width">
+          <mat-label>Local</mat-label>
+          <mat-select formControlName="local">
+            <!--- valor / vista de bicicleta -->
+            <mat-option *ngFor="let p of listaLocales" [value]="p.localid">{{
+              p.localnombre
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br />
 
-            <mat-form-field class="example-full-width">
-                <mat-label>Local</mat-label>
-                <mat-select formControlName="local">
-                  <!--- valor / vista de bicicleta -->
-                  <mat-option *ngFor="let p of listaLocales" [value]="p.localid">{{p.localnombre}}</mat-option>
-                </mat-select>
-            </mat-form-field>
-            <br />
+        <mat-form-field class="example-full-width">
+          <mat-label>Foto</mat-label>
+          <input matInput placeholder="Foto" formControlName="bicicletafoto" />
+        </mat-form-field>
+        <br />
 
-            <mat-form-field class="example-full-width">
-                <mat-label>Foto</mat-label>
-                <input matInput placeholder="Foto" formControlName="bicicletafoto" />
-            </mat-form-field>
-            <br />
-
-            <button mat-raised-button color="primary">Aceptar</button>
-            <button mat-raised-button color="accent" routerLink="/bicicleta">Cancelar</button>
-            <p>{{ mensaje }}</p>
-        </form>
+        <button mat-raised-button color="primary">Aceptar</button>
+        <button mat-raised-button color="accent" routerLink="/bicicleta">
+          Cancelar
+        </button>
+        <p>{{ mensaje }}</p>
+      </form>
     </div>
-</body>
-
+  </body>
 </html>
-
