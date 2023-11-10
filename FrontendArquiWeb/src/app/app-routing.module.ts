@@ -1,3 +1,4 @@
+import { ListarBicicletaClienteComponent } from './components/bicicleta/listar-bicicleta-cliente/listar-bicicleta-cliente.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UsuarioComponent } from './components/usuario/usuario.component';
@@ -27,8 +28,10 @@ const routes: Routes = [
   },
   {
     path: 'bicicleta', component: BicicletaComponent,
-    children: [{ 
-      path: 'nuevo', component: CreaeditaBicicletaComponent }],
+    children: [
+      { path: 'nuevo', component: CreaeditaBicicletaComponent },
+      { path: 'edicion/:id', component:CreaeditaBicicletaComponent},
+      { path: 'lista2', component:ListarBicicletaClienteComponent}],
   },
   {
     path: 'local', component: LocalComponent,
