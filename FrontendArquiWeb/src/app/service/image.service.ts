@@ -15,6 +15,6 @@ export class ImageService {
 
     formData.append('image',image);
 
-    return this.http.post<Response>('/media/upload',formData);
+    return this.http.post<Response>('/',formData);
   }
 }

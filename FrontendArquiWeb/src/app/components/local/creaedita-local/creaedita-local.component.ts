@@ -26,7 +26,7 @@ export class CreaeditaLocalComponent implements OnInit {
     this.form = this.formBuilder.group({
       localdireccion: ['', Validators.required],
       localnombre: ['', Validators.required],
-      localfoto: ['', Validators.required],
+      localfoto: ['',Validators.required],
       usuario: ['', Validators.required]
     });
 

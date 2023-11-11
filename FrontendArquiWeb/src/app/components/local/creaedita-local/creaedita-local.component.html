@@ -9,6 +9,23 @@
     <div class="container" style="text-align: center">
       <h2>Registro de Local</h2>
       <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+        <div class="form-group" *ngIf="obtenerControlCampo('localdireccion')?.errors?.['required']">
+          <label for="exampleFormControlInput1">Direccion del local</label>
+          <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Calle 123">
+        </div>
+        <div class="form-group" *ngIf="obtenerControlCampo('localnombre')?.errors?.['required']">
+          <label for="exampleFormControlInput1">Nombre del local</label>
+          <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Las bicis">
+        </div>
+        <div class="form-group" *ngIf="obtenerControlCampo('usuario')?.errors?.['required']">
+          <label for="exampleFormControlInput1">Propietario</label>
+          <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Propietario">
+        </div>
+        
+        <div *ngIf="obtenerControlCampo('localfoto')?.errors?.['required']">
+        <app-media></app-media>
+      </div>
+      <!--
         <mat-form-field class="example-full-width">
           <mat-label>localdireccion</mat-label>
           <input
@@ -22,31 +39,7 @@
             La direccion es obligatoria.
           </mat-error>
         </mat-form-field>
-        <br />
-        <mat-form-field class="example-full-width">
-          <mat-label>localnombre</mat-label>
-          <input matInput placeholder="Nombre" formControlName="localnombre" />
-          <mat-error
-            *ngIf="obtenerControlCampo('localnombre')?.errors?.['required']"
-          >
-            El nombre del local es obligatorio.
-          </mat-error>
-        </mat-form-field>
-        <br />
-        <mat-form-field class="example-full-width">
-          <mat-label>usuario</mat-label>
-          <input matInput placeholder="Propietario" formControlName="usuario" />
-          <mat-error
-            *ngIf="obtenerControlCampo('usuario')?.errors?.['required']"
-          >
-            El propietario es obligatorio.
-          </mat-error>
-        </mat-form-field>
-        <br />
-        <div class="form-group">
-          <app-image-upload></app-image-upload>
-        </div>
-        <br />
+      -->
         <button mat-raised-button color="primary">Aceptar</button>
         <button mat-raised-button color="warn" routerLink="/local">
           Cancelar

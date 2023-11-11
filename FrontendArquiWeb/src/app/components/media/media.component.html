@@ -1,0 +1,9 @@
+<div class="mb-5">
+    <label for="image" class="form-label">Foto del local</label>
+    <br>
+    <input type="file" class="form-control" id="image" (change)="upload($event)">
+  </div>
+
+<div *ngIf="url">
+    <img [src]="url" alt="" class="img-fluid img-thumbnail">
+</div>
