@@ -1,3 +1,4 @@
+import { emitDistinctChangesOnlyDefaultValue } from '@angular/compiler';
 import { Component } from '@angular/core';
 import {
   AbstractControl,
@@ -7,6 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { updateLocale } from 'moment';
 import { Bicicleta } from 'src/app/model/bicicleta';
 import { Local } from 'src/app/model/local';
 import { BicicletaService } from 'src/app/service/bicicleta/bicicleta.service';
@@ -21,6 +23,8 @@ export class CreaeditaBicicletaComponent {
   form: FormGroup = new FormGroup({});
   bici: Bicicleta = new Bicicleta();
   mensaje: string = '';
+  idbicicleta: number= 0;
+  edicion: boolean = false;
 
   tiposestado: { value: boolean; viewValue: string }[] = [
     { value: true, viewValue: 'Disponible' },
@@ -47,6 +51,14 @@ export class CreaeditaBicicletaComponent {
   ) {}
 
   ngOnInit(): void {
+
+    this.route.params.subscribe((data: Params)=>{
+      this.idbicicleta = data['id'];
+      this.edicion = data['id'] != null;
+      this.init();
+    })
+
+
     this.form = this.formBuilder.group({
       bicicletamodelo: ['', Validators.required],
       bicicletaprecio: ['', [Validators.required, Validators.pattern(/^(?!0\d)\d+(\.\d+)?$/)],], // Acepta números enteros o decimales que no comiencen con cero
@@ -71,12 +83,20 @@ export class CreaeditaBicicletaComponent {
       this.bici.bicicletafoto = this.form.value.bicicletafoto;
       this.bici.local.localid = this.form.value.local;
 
-      this.bS.insert(this.bici).subscribe((data) => {
-        this.bS.list().subscribe((lista) => {
-          this.bS.setList(lista);
-        });
-      });
+      if(this.edicion){
+         this.bS.update(this.bici).subscribe(()=>{
+          this.bS.list().subscribe((data) =>{
+            this.bS.setList(data);
+          })
+         })
+      }else{
 
+        this.bS.insert(this.bici).subscribe((data) => {
+          this.bS.list().subscribe((lista) => {
+            this.bS.setList(lista);
+          });
+        });
+      }
       this.router.navigate(['bicicleta']);
     } else {
       this.mensaje = 'Por favor complete todos los campos obligatorios.';
@@ -94,5 +114,22 @@ export class CreaeditaBicicletaComponent {
   onInputChange(event: any) { //evento que no permite escribir letras en campos numericos
     const input = event.target.value;
     event.target.value = input.replace(/[^0-9.]/g, ''); // permite escribir números y el punto decimal
+  }
+
+  init(){
+    if(this.edicion){
+      this.bS.listId(this.idbicicleta).subscribe((data=>{
+        this.bici = data; // Asignar los datos al objeto bicicleta
+        this.form.patchValue({
+          bicicletamodelo: data.bicicletamodelo,
+          bicicletaprecio: data.bicicletaprecio,
+          bicicletanumaro: data.bicicletanumaro,
+          bicicletadetalles: data.bicicletadetalles,
+          bicicletaestado: data.bicicletaestado,
+          bicicletafoto: data.bicicletafoto,
+          local: data.local.localid
+        });
+      }))
+    }
   }
 }
