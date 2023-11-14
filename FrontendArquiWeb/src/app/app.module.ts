@@ -24,6 +24,10 @@ import { ListarReservaComponent } from './components/reserva/listar-reserva/list
 
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RegistroComponent } from './components/registro/registro.component';
+import { ResenaComponent } from './components/resena/resena.component';
+import { ListarResenaComponent } from './components/resena/listar-resena/listar-resena.component';
+import { CreaeditaResenaComponent } from './components/resena/creaedita-resena/creaedita-resena.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -46,6 +50,9 @@ import { RegistroComponent } from './components/registro/registro.component';
     CreaeditaReservaComponent,
     ListarReservaComponent,
     RegistroComponent,
+    ResenaComponent,
+    ListarResenaComponent,
+    CreaeditaResenaComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,6 +60,7 @@ import { RegistroComponent } from './components/registro/registro.component';
     BrowserAnimationsModule,
     MaterialModule,
     MatSnackBarModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
