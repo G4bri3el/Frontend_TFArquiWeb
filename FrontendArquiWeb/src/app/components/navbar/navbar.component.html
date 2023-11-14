@@ -5,6 +5,8 @@
     <button mat-button [matMenuTriggerFor]="menuLocales" *ngIf="validarRol('ADMIN') || validarRol('EMPRESARIO')">Locales</button>
     <button mat-button [matMenuTriggerFor]="menuBicicletas">Bicicleta</button>
     <button mat-button [matMenuTriggerFor]="menuReserva">Reserva</button>
+    <button mat-button [matMenuTriggerFor]="menuResena">Reseña</button>
+
     
     <button mat-button [matMenuTriggerFor]="menuSalir">Cerrar Sesion</button>
 
@@ -35,6 +37,13 @@
     <button mat-menu-item routerLink="/reserva">Listar reserva</button>
     <!-- Agrega más elementos de menú si es necesario -->
   </mat-menu>
+
+  <mat-menu #menuResena="matMenu">
+    <button mat-menu-item routerLink="/resena/nuevo">Registrar reseña</button>
+    <button mat-menu-item routerLink="/resena">Listar reseña</button>
+    <!-- Agrega más elementos de menú si es necesario -->
+  </mat-menu>
+
 
   <mat-menu #menuSalir="matMenu">
     <button mat-menu-item routerLink="/login" (click)="cerrar()">
