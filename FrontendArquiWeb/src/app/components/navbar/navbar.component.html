@@ -5,30 +5,30 @@
     <button mat-button [matMenuTriggerFor]="menuLocales" *ngIf="validarRol('ADMIN') || validarRol('EMPRESARIO')">Locales</button>
     <button mat-button [matMenuTriggerFor]="menuBicicletas">Bicicleta</button>
     <button mat-button [matMenuTriggerFor]="menuReserva">Reserva</button>
+    <button mat-button [matMenuTriggerFor]="menuResena">Reseña</button>
 
+    
     <button mat-button [matMenuTriggerFor]="menuSalir">Cerrar Sesion</button>
 
   </mat-toolbar>
-
+  
   <mat-menu #menuUsuarios="matMenu">
     <button mat-menu-item routerLink="/usuario/nuevo">Registro Cliente</button>
     <button mat-menu-item routerLink="/usuario/empresario">Registro Empresario</button>
     <button mat-menu-item routerLink="/usuario">Listar</button>
-
+  
     <!-- Agrega más elementos de menú si es necesario -->
   </mat-menu>
-
+  
   <mat-menu #menuLocales="matMenu">
     <button mat-menu-item routerLink="/local/nuevo">Registrar Local</button>
     <button mat-menu-item routerLink="/local">Listar Locales</button>
     <!-- Agrega más elementos de menú si es necesario -->
   </mat-menu>
-
+  
   <mat-menu #menuBicicletas="matMenu">
     <button mat-menu-item routerLink="/bicicleta/nuevo" *ngIf="validarRol('ADMIN') || validarRol('EMPRESARIO')">Registrar Bicicleta</button>
     <button mat-menu-item routerLink="/bicicleta">Listar Bicicletas</button>
-    <button mat-menu-item routerLink="/bicicleta/listaCliente">Listar Bicicletas Cliente</button>
-
     <!-- Agrega más elementos de menú si es necesario -->
   </mat-menu>
 
@@ -38,11 +38,18 @@
     <!-- Agrega más elementos de menú si es necesario -->
   </mat-menu>
 
+  <mat-menu #menuResena="matMenu">
+    <button mat-menu-item routerLink="/resena/nuevo">Registrar reseña</button>
+    <button mat-menu-item routerLink="/resena">Listar reseña</button>
+    <!-- Agrega más elementos de menú si es necesario -->
+  </mat-menu>
+
+
   <mat-menu #menuSalir="matMenu">
     <button mat-menu-item routerLink="/login" (click)="cerrar()">
       <mat-icon>logout</mat-icon>
       <span>Cerrar sesión</span>
-
+  
     </button>
     <button mat-menu-item >Rol:
       <span>{{role}}</span>

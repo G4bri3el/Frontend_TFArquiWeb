@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de resenas</title>
+</head>
+<body>
+
+    <div class="container" style="text-align: center">
+
+        <br>
+        <h2>Registro de resenas</h2>
+
+        <form [formGroup]="form" (submit)="aceptar()" class="example-form" >
+
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Cantidad de estrellas</mat-label>
+                <mat-select formControlName="resenaestrellas">
+                  <!--- valor / vista de estrellas -->
+                  <mat-option *ngFor="let p of cantidadestrellas" [value]="p.value">{{p.viewValue}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <br />
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Comentario</mat-label>
+                <input matInput placeholder="Comentario" formControlName="resenacomentario" />
+            </mat-form-field>
+            <br />
+       
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Reserva</mat-label>
+                <mat-select formControlName="reserva">
+                  <!--- valor / vista de reserva -->
+                  <mat-option *ngFor="let p of listaReservas" [value]="p.reservaid">{{p.reservaid}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <br />
+
+
+            <button mat-raised-button color="primary">Aceptar</button>
+            <button mat-raised-button color="accent" routerLink="/resena">Cancelar</button>
+            <p>{{ mensaje }}</p>
+        </form>
+    </div>
+    
+</body>
+</html>
