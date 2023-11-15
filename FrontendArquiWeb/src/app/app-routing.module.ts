@@ -31,7 +31,7 @@ const routes: Routes = [
     children: [
       { path: 'nuevo', component: CreaeditaBicicletaComponent },
       { path: 'edicion/:id', component:CreaeditaBicicletaComponent},
-      { path: 'lista2', component:ListarBicicletaClienteComponent}],
+      { path: 'listaCliente', component:ListarBicicletaClienteComponent}],
   },
   {
     path: 'local', component: LocalComponent,

@@ -21,6 +21,7 @@ import { CreaeditaEmpresarioComponent } from './components/usuario/creaedita-emp
 import { ReservaComponent } from './components/reserva/reserva.component';
 import { CreaeditaReservaComponent } from './components/reserva/creaedita-reserva/creaedita-reserva.component';
 import { ListarReservaComponent } from './components/reserva/listar-reserva/listar-reserva.component';
+import { ListarBicicletaClienteComponent } from './components/bicicleta/listar-bicicleta-cliente/listar-bicicleta-cliente.component';
 
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RegistroComponent } from './components/registro/registro.component';
@@ -47,6 +48,7 @@ import { CartComponent } from './components/cart/cart.component';
     ListarReservaComponent,
     RegistroComponent,
     CartComponent,
+    ListarBicicletaClienteComponent,
   ],
   imports: [
     BrowserModule,

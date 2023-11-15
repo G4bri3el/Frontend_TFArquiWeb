@@ -20,4 +20,9 @@ export class CartService {
   get products() {
     return this._products.asObservable();
   }
+
+  deleteProduct(index: number) {
+    this.cartProduct.splice(index, 1);
+    this._products.next(this.cartProduct);
+  }
 }
