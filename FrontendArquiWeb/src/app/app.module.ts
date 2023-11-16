@@ -26,6 +26,9 @@ import { ListarBicicletaClienteComponent } from './components/bicicleta/listar-b
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RegistroComponent } from './components/registro/registro.component';
 import { CartComponent } from './components/cart/cart.component';
+import { ResenaComponent } from './components/resena/resena.component';
+import { ListarResenaComponent } from './components/resena/listar-resena/listar-resena.component';
+import { CreaeditaResenaComponent } from './components/resena/creaedita-resena/creaedita-resena.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +52,9 @@ import { CartComponent } from './components/cart/cart.component';
     RegistroComponent,
     CartComponent,
     ListarBicicletaClienteComponent,
+    ResenaComponent,
+    ListarResenaComponent,
+    CreaeditaResenaComponent,
   ],
   imports: [
     BrowserModule,

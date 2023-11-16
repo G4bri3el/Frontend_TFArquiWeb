@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import { environment } from 'src/environments/environment.development';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Subject, Observable} from 'rxjs'
 
 @Injectable({
@@ -10,11 +9,11 @@ export class ImageService {
 
   constructor(private http:HttpClient) { }
 
-  public uploadImage(image:File):Observable<Response>{
-    const formData=new FormData();
+  uploadImage(imagen:File):Observable<any>{
+    let token = sessionStorage.getItem('token');
+    const formData = new FormData();
+    formData.append('file',imagen);
 
-    formData.append('image',image);
-
-    return this.http.post<Response>('/',formData);
+    return this.http.post<any>('http://localhost:8080/media/upload',formData)
   }
 }

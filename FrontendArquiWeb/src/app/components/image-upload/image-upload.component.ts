@@ -1,9 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
 import { ImageService } from 'src/app/service/image.service';
-
-class ImageSnippet{
-  constructor(public src:string, public file:File){}
-}
 
 @Component({
   selector: 'app-image-upload',
@@ -12,27 +8,37 @@ class ImageSnippet{
 })
 export class ImageUploadComponent {
   
-  selectedFile:ImageSnippet;
+  @Output() newFileEvent = new EventEmitter<File>();
+  @ViewChild('fileInput') fileInput: ElementRef | undefined;
+
+  selectedFile: File | null = null;
+  imagePreview: string | ArrayBuffer | null = null;
 
   constructor(private imageService:ImageService){}
+  
+  upload(event: any){
+    const file = event.target.files[0];
+    if(file){
+      this.selectedFile = file;
+      this.previewImage(file);
+      this.newFileEvent.emit(file);
+      
+    }
+  }
 
-  processFile(imageInput:any){
-    const file:File=imageInput.files[0];
-    const reader= new FileReader();
-
-    reader.addEventListener('load',(event:any)=>{
-      this.selectedFile=new ImageSnippet(event.target.result,file);
-
-      this.imageService.uploadImage(this.selectedFile.file).subscribe(
-        (res)=>{
-
-        },
-        (err)=>{
-
-        }
-      )
-    });
-
+  previewImage(file: File): void {
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imagePreview = reader.result;
+    };
     reader.readAsDataURL(file);
+  }
+
+  openFileInput() {
+    if(this.fileInput){
+      
+      this.fileInput.nativeElement.click();
+      this.fileInput.nativeElement.preventDefault();
+    }
   }
 }

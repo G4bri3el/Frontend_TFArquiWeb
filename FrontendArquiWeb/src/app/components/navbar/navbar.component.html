@@ -4,10 +4,8 @@
     <button mat-button [matMenuTriggerFor]="menuUsuarios" *ngIf="validarRol('ADMIN')">Usuarios</button>
     <button mat-button [matMenuTriggerFor]="menuLocales" *ngIf="validarRol('ADMIN') || validarRol('EMPRESARIO')">Locales</button>
     <button mat-button [matMenuTriggerFor]="menuBicicletas">Bicicleta</button>
-    <button mat-button [matMenuTriggerFor]="menuReserva">Reserva</button>
-    <button mat-button [matMenuTriggerFor]="menuResena">Reseña</button>
-
-    
+    <button mat-button [matMenuTriggerFor]="menuReserva" *ngIf="validarRol('ADMIN') || validarRol('CLIENTE')">Reserva</button>
+    <button mat-button [matMenuTriggerFor]="menuResena" >Reseñas</button>
     <button mat-button [matMenuTriggerFor]="menuSalir">Cerrar Sesion</button>
 
   </mat-toolbar>
@@ -22,19 +20,23 @@
   
   <mat-menu #menuLocales="matMenu">
     <button mat-menu-item routerLink="/local/nuevo">Registrar Local</button>
-    <button mat-menu-item routerLink="/local">Listar Locales</button>
+    <button mat-menu-item routerLink="/local" *ngIf="validarRol('ADMIN')">Listar Locales</button>
+    <button mat-menu-item routerLink="/local/id">Mis Locales</button>
     <!-- Agrega más elementos de menú si es necesario -->
   </mat-menu>
   
   <mat-menu #menuBicicletas="matMenu">
     <button mat-menu-item routerLink="/bicicleta/nuevo" *ngIf="validarRol('ADMIN') || validarRol('EMPRESARIO')">Registrar Bicicleta</button>
-    <button mat-menu-item routerLink="/bicicleta">Listar Bicicletas</button>
+    <button mat-menu-item routerLink="/bicicleta" *ngIf="validarRol('ADMIN') || validarRol('EMPRESARIO')">Listar Bicicletas</button>
+    <button mat-menu-item routerLink="/bicicleta/id" *ngIf="validarRol('ADMIN') || validarRol('EMPRESARIO')">Mis Bicicletas</button>
+    <button mat-menu-item routerLink="/bicicleta/listaCliente" *ngIf="validarRol('ADMIN') || validarRol('CLIENTE')">Bicicletas</button>
     <!-- Agrega más elementos de menú si es necesario -->
   </mat-menu>
 
   <mat-menu #menuReserva="matMenu">
     <button mat-menu-item routerLink="/reserva/nuevo">Registrar reserva</button>
-    <button mat-menu-item routerLink="/reserva">Listar reserva</button>
+    <button mat-menu-item routerLink="/reserva" *ngIf="validarRol('ADMIN')">Listar reservas</button>
+    <button mat-menu-item routerLink="/reserva/id">Mis reservas</button>
     <!-- Agrega más elementos de menú si es necesario -->
   </mat-menu>
 

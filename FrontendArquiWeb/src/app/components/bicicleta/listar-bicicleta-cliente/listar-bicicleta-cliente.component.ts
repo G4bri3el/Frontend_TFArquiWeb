@@ -37,4 +37,20 @@ export class ListarBicicletaClienteComponent {
   onClick( bicicleta: Bicicleta){
     this.cS.addNewProduct(bicicleta);
   }
+  
+  TieneFoto(bici: Bicicleta){
+    if(bici.bicicletafoto == " " || bici.bicicletafoto == ""){
+      return false;
+    }else{
+      return true;
+    }
+  }
+
+  NoTieneFoto(bici: Bicicleta){
+    if(bici.bicicletafoto == " " || bici.bicicletafoto == ""){
+      return true;
+    }else{
+      return false;
+    }
+  }
 }

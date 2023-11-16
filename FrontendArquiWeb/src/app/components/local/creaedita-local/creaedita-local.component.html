@@ -10,7 +10,7 @@
       <h2>Registro de Local</h2>
       <form [formGroup]="form" (submit)="aceptar()" class="example-form">
         <mat-form-field class="example-full-width">
-          <mat-label>localdireccion</mat-label>
+          <mat-label>Direccion del Local</mat-label>
           <input
             matInput
             placeholder="Direccion del Local"
@@ -24,18 +24,18 @@
         </mat-form-field>
         <br />
         <mat-form-field class="example-full-width">
-          <mat-label>localnombre</mat-label>
+          <mat-label>Nombre del local</mat-label>
           <input matInput placeholder="Nombre" formControlName="localnombre" />
           <mat-error
             *ngIf="obtenerControlCampo('localnombre')?.errors?.['required']"
           >
-            El nombre del local es obligatorio.
+            El nombre es obligatorio.
           </mat-error>
         </mat-form-field>
         <br />
         <mat-form-field class="example-full-width">
-          <mat-label>usuario</mat-label>
-          <input matInput placeholder="Propietario" formControlName="usuario" />
+          <mat-label>ID Empresario</mat-label>
+          <input matInput placeholder="1" formControlName="usuario" />
           <mat-error
             *ngIf="obtenerControlCampo('usuario')?.errors?.['required']"
           >
@@ -43,11 +43,11 @@
           </mat-error>
         </mat-form-field>
         <br />
-        <div class="form-group">
-          <app-image-upload></app-image-upload>
+        <div>
+          <app-image-upload (newFileEvent)="addNewFileLocal($event)"></app-image-upload>
         </div>
         <br />
-        <button mat-raised-button color="primary">Aceptar</button>
+        <button mat-raised-button color="primary" (click)="onAceptarClick($event)">Aceptar</button>
         <button mat-raised-button color="warn" routerLink="/local">
           Cancelar
         </button>
