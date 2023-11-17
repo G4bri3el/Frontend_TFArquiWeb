@@ -104,8 +104,8 @@
           </mat-form-field>
           <br />
 
-          <button mat-raised-button color="primary">Crear Cuenta</button>
-          <button mat-raised-button color="accent" routerLink="/registro">
+          <button mat-raised-button color="primary" (click)="aceptar()">Crear Cuenta</button>
+          <button mat-raised-button color="accent" routerLink="/usuario/registro">
             Cancelar
           </button>
           <p>{{ mensaje }}</p>

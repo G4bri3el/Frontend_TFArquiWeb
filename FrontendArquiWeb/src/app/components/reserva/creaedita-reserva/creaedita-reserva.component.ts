@@ -59,7 +59,7 @@ export class CreaeditaReservaComponent implements OnInit {
           this.rS.setList(data);
         });
       });
-      this.router.navigate(['reservas']);
+      this.router.navigate(['reserva/listar']);
     } else {
       this.mensaje = 'Ingrese todos los campos!!!!';
     }
