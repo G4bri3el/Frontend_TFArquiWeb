@@ -74,7 +74,7 @@ export class CreaeditaLocalComponent implements OnInit {
         this.lS.setList(data);
       });
     });
-    this.router.navigate(['local']);
+    this.router.navigate(['/local/listar']);
   }
 
   obtenerControlCampo(nombreCampo: string): AbstractControl {
