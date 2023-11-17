@@ -19,6 +19,7 @@ import { ListarLocalComponent } from './components/local/listar-local/listar-loc
 import { ListarResenaComponent } from './components/resena/listar-resena/listar-resena.component';
 import { ListarReservaComponent } from './components/reserva/listar-reserva/listar-reserva.component';
 import { ListarBicicletaComponent } from './components/bicicleta/listar-bicicleta/listar-bicicleta.component';
+import { vigilanteGuard } from './vigilante.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -26,14 +27,14 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   {
-    path: 'usuario', component: UsuarioComponent,
+    path: 'usuario', component: UsuarioComponent, canActivate:[vigilanteGuard],
     children: [
       { path: 'nuevo', component: CreaeditaUsuarioComponent },
       { path: 'empresario', component: CreaeditaEmpresarioComponent },
     ],
   },
   {
-    path: 'bicicleta', component: BicicletaComponent,
+    path: 'bicicleta', component: BicicletaComponent,canActivate:[vigilanteGuard],
     children: [
       { path: 'nuevo', component: CreaeditaBicicletaComponent },
       { path: 'listar', component: ListarBicicletaComponent},
@@ -41,7 +42,7 @@ const routes: Routes = [
       { path: 'listaCliente', component: ListarBicicletaClienteComponent }],
   },
   {
-    path: 'local', component: LocalComponent,
+    path: 'local', component: LocalComponent,canActivate:[vigilanteGuard],
     children: [{
 
       path: 'nuevo', component: CreaeditaLocalComponent
@@ -49,7 +50,7 @@ const routes: Routes = [
     { path: 'listar', component: ListarLocalComponent }],
   },
   {
-    path: 'reserva', component: ReservaComponent,
+    path: 'reserva', component: ReservaComponent,canActivate:[vigilanteGuard],
     children: [
       { path: 'nuevo', component: CreaeditaReservaComponent }
       ,
@@ -57,7 +58,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'resena', component: ResenaComponent,
+    path: 'resena', component: ResenaComponent,canActivate:[vigilanteGuard],
     children: [
       { path: 'nuevo', component: CreaeditaResenaComponent }
       ,
