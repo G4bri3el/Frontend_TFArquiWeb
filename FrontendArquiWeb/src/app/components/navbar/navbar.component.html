@@ -19,9 +19,9 @@
   </mat-menu>
   
   <mat-menu #menuLocales="matMenu">
-    <button mat-menu-item routerLink="/local/nuevo">Registrar Local</button>
+    <button mat-menu-item routerLink="/local/nuevo" *ngIf="validarRol('ADMIN') || validarRol('EMPRESARIO')">Registrar Local</button>
     <button mat-menu-item routerLink="/local" *ngIf="validarRol('ADMIN')">Listar Locales</button>
-    <button mat-menu-item routerLink="/local/id">Mis Locales</button>
+    <button mat-menu-item routerLink="/local/id" *ngIf="validarRol('ADMIN') || validarRol('EMPRESARIO')" >Mis Locales</button>
     <!-- Agrega más elementos de menú si es necesario -->
   </mat-menu>
   

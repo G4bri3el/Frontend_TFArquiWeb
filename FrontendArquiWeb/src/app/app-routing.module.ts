@@ -37,8 +37,10 @@ const routes: Routes = [
   },
   {
     path: 'local', component: LocalComponent,
-    children: [{
-      path: 'nuevo', component: CreaeditaLocalComponent }],
+    children: [
+      { path: 'nuevo', component: CreaeditaLocalComponent },
+      { path: 'edicion/:id', component:CreaeditaLocalComponent },
+    ],
   },
   {
     path:'reserva', component:ReservaComponent,
