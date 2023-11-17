@@ -4,14 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sen:wght@600&display=swap" rel="stylesheet">
+
 </head>
 <body>
-    <div class="container" style="text-align: center">
-        <br/>
-        <h1>¿Eres Cliente o Empresario?</h1>
-        <button mat-raised-button color="primary" routerLink="/usuario/nuevo">Cliente</button>
-        <button mat-raised-button color="primary" routerLink="/usuario/empresario">Empresario</button>
-    </div>
+    <div class="container">
+        <h1>Bienvenido ¿Eres Cliente o Empresario?</h1>
+        <div class="button-container">
+            <button mat-raised-button color="primary" routerLink="/usuario/nuevo">
+                Cliente
+                <span class="material-icons">person</span>
+            </button>
+            <button mat-raised-button color="primary" routerLink="/usuario/empresario">
+                Empresario
+                <span class="material-icons">business</span>
+            </button>
 
+            
+        </div>
+    </div>
 </body>
 </html>
