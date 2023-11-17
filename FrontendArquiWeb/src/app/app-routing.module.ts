@@ -13,6 +13,8 @@ import { CreaeditaEmpresarioComponent } from './components/usuario/creaedita-emp
 import { ReservaComponent } from './components/reserva/reserva.component';
 import { CreaeditaReservaComponent } from './components/reserva/creaedita-reserva/creaedita-reserva.component';
 import { RegistroComponent } from './components/registro/registro.component';
+import { ResenaComponent } from './components/resena/resena.component';
+import { CreaeditaResenaComponent } from './components/resena/creaedita-resena/creaedita-resena.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -31,7 +33,7 @@ const routes: Routes = [
     children: [
       { path: 'nuevo', component: CreaeditaBicicletaComponent },
       { path: 'edicion/:id', component:CreaeditaBicicletaComponent},
-      { path: 'lista2', component:ListarBicicletaClienteComponent}],
+      { path: 'listaCliente', component:ListarBicicletaClienteComponent}],
   },
   {
     path: 'local', component: LocalComponent,
@@ -43,7 +45,14 @@ const routes: Routes = [
     children: [
       {path:'nuevo', component:CreaeditaReservaComponent}
     ]
+  },
+  {
+    path:'resena', component:ResenaComponent,
+    children: [
+      {path:'nuevo', component:CreaeditaResenaComponent}
+    ]
   }
+
 ];
 
 @NgModule({

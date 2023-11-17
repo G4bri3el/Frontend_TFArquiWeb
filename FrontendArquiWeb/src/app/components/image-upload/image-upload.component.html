@@ -1,12 +1,19 @@
-<label class="image-upload-container btn btn-bwm">
-    <span>Select Image</span>
-<input #imageInput
- type="file"
-    accept="image/*"
-    (change)="processFile(imageInput)">
-</label>
+<mat-card>
+  <mat-card-content>
+    <input
+      type="file"
+      (change)="upload($event)"
+      style="display: none"
+      #fileInput
+    />
+    <button mat-raised-button color="primary" (click)="openFileInput()">
+      <mat-icon>cloud_upload</mat-icon>
+      Subir Imagen
+    </button>
+    <span *ngIf="selectedFile" class="file-name">{{ selectedFile.name }}</span>
+  </mat-card-content>
 
-<div *ngIf="selectedFile" class="img-preview-container">
-    <div class="img-preview"
-    [ngStyle]="{'background-image':'url('+ selectedFile.src +')'}"></div>
-</div>
+  <div *ngIf="selectedFile" class="preview-container">
+    <img [src]="imagePreview" alt="Vista previa de la imagen" class="preview-image" />
+  </div>
+</mat-card>

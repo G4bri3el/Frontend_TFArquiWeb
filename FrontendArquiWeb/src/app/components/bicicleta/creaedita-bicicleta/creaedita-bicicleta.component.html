@@ -65,10 +65,9 @@
         </mat-form-field>
         <br />
 
-        <mat-form-field class="example-full-width">
-          <mat-label>Foto</mat-label>
-          <input matInput placeholder="Foto" formControlName="bicicletafoto" />
-        </mat-form-field>
+        <div>
+          <app-image-upload (newFileEvent)="addNewFileBici($event)"></app-image-upload>
+        </div>
         <br />
 
         <button mat-raised-button color="primary">Aceptar</button>

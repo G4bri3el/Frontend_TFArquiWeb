@@ -1,8 +1,9 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Bicicleta } from 'src/app/model/bicicleta';
 import { BicicletaService } from 'src/app/service/bicicleta/bicicleta.service';
+import { CartService } from 'src/app/service/cart/cart.service';
 
 @Component({
   selector: 'app-listar-bicicleta-cliente',
@@ -13,7 +14,10 @@ export class ListarBicicletaClienteComponent {
   dataSource: MatTableDataSource<Bicicleta> = new MatTableDataSource();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  constructor(private bS: BicicletaService) {}
+  constructor(
+    private bS: BicicletaService,
+    private cS: CartService
+    ) {}
 
 
   ngOnInit(): void {
@@ -28,5 +32,25 @@ export class ListarBicicletaClienteComponent {
       this.dataSource.paginator = this.paginator;
     });
 
+  }
+
+  onClick( bicicleta: Bicicleta){
+    this.cS.addNewProduct(bicicleta);
+  }
+  
+  TieneFoto(bici: Bicicleta){
+    if(bici.bicicletafoto == " " || bici.bicicletafoto == ""){
+      return false;
+    }else{
+      return true;
+    }
+  }
+
+  NoTieneFoto(bici: Bicicleta){
+    if(bici.bicicletafoto == " " || bici.bicicletafoto == ""){
+      return true;
+    }else{
+      return false;
+    }
   }
 }

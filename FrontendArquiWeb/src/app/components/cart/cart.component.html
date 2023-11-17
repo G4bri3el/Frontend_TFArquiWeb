@@ -1,11 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <h2>CARRITO DE COMPRA</h2>
+    <mat-list>
+      <mat-list-item *ngFor="let product of bicicletas; let indice = index">
+        <span matListItemTitle>{{ product.bicicletamodelo }}</span>
+        <span matListItemSubtitle>{{ product.bicicletanumaro }}</span>
+        <span matListItemLine>{{ product.bicicletaprecio }}</span>
+        <button mat-icon-button (click)="remove(indice)">
+          <mat-icon>remove_shopping_cart</mat-icon>
+        </button>
+      </mat-list-item>
+    </mat-list>
+
+    <footer><h2>{{total | currency: '$'}}</h2></footer>
+  </body>
 </html>

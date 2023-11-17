@@ -1,18 +1,18 @@
 .header{
-    background-color: #000001;
+    background-color: #ffffff;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     height: 12%;
     width: 100%;
-    padding: 5px 3%;
+    padding: 10px 3%;
 }
 .header .logo{
     cursor: pointer;
     margin-right: auto;
 }
 .header .logo img{
-    height: 60px;
+    height: 40px;
     width: auto;
     transition: all 0.3s;
 }
@@ -32,29 +32,51 @@
 }
 .header .nav-links a{
     font-size: 18px;
-    color: #ffffff;
+    color:#000000;
     text-decoration: none;
 }
 .header .nav-links li a:hover{
     color: #68d39a;
 }
-.header .btn button{
+.header .btn button {
     font-size: 18px;
     margin-left: 20px;
     font-weight: 700;
     color: #1c1b1b;
     padding: 9px 25px;
-    background: #f7f7f7;
+    background: #68d39a; /* Cambiado el fondo a verde */
     border: none;
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease 0s;
 }
+
+.header .btnregistro button {
+    font-size: 18px;
+    margin-left: 20px;
+    font-weight: 700;
+    color: #ffffff; /* Cambiado el color del texto a blanco */
+    padding: 9px 25px;
+    background: #000000; /* Cambiado el fondo a negro */
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+
 .header .btn button:hover{
     background-color: #f7f7f7;
     color: #68d39a;
     transform: scale(1.2);
 }
+
+.header .btnregistro button:hover {
+    background-color: #f7f7f7; /* Cambia el color de fondo al mismo que el botón verde */
+    color: #68d39a; /* Cambia el color del texto a blanco */
+    transform: scale(1.2);
+}
+
 /*Footer section*/
 *{
     margin: 0;
@@ -69,6 +91,7 @@ body{
 }
 
 footer {
+    padding: 100px 100px;
     width: 100%;
     position: relative;
     bottom: 0;
@@ -82,7 +105,7 @@ footer {
     flex-direction: column;
 }
 footer img{
-    height: 150px;
+    height: 30px;
 }
 .social-icons-container,.footer-menu-container{
     display: flex;
@@ -153,8 +176,12 @@ footer img{
     text-align: center;
     margin-bottom: 20px;
 }
+*/
+
 
 /*main section*/
+
+
 html {
     font: normal 16px sans-serif;
     scroll-behavior: smooth !important;
@@ -231,13 +258,51 @@ section p {
     line-height: 2;
 }
 
-ul.grid {
-    width: 100%;
+ul.grid img {
+    width: 30%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
+
+/* Estilos para alinear la imagen a la izquierda y el texto a la derecha */
+.our-work {
+    background-color: white;
+    text-align: center;
+    padding: 150px 100px; /* Ajusta el espacio superior e inferior según sea necesario */
+}
+
+.our-work .content {
+    display: flex;
+    justify-content: space-around; 
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.our-work .image {
+    max-width: 45%; /* Ajusta el ancho máximo de la imagen según sea necesario */
+    margin-right: 20px; /* Ajusta el espacio entre la imagen y el texto según sea necesario */
+}
+
+.our-work img {
+    width: 80%;
+    height: auto;
+}
+
+.our-work .text {
+    max-width: 45%; /* Ajusta el ancho máximo del texto según sea necesario */
+    text-align: justify;
+}
+
+.our-work h3.title {
+    font-size: 24px; /* Ajusta el tamaño del título según sea necesario */
+    margin-bottom: 15px; /* Ajusta el espacio inferior del título según sea necesario */
+}
+
+.our-work p {
+    margin-bottom: 15px; /* Ajusta el espacio inferior de los párrafos según sea necesario */
+}
 
 
 .hero {
@@ -288,15 +353,10 @@ ul.grid {
     text-shadow: 1px 1px 5px #000000;
 }
 
-/* Our Work Section*/
-.our-work {
-    background-color: white;
-}
-
-
-/* Services Section*/
+/*Services Section*/
 
 .services {
+    
     width: 100%;
     display: flex;
     background-color: #68d39a;
@@ -313,7 +373,6 @@ ul.grid {
 }
 .card {
     width: 35%;
-    margin: 20px;
     border-radius: 6px;
     overflow: hidden;
     background: white;
@@ -323,7 +382,7 @@ ul.grid {
     padding: 10px;
     position: relative;
     right: 400px;
-
+    margin-left: 100px;
 }
 .card:hover{
     box-shadow: 5px 5px 20px rgb(0,0,0,0.4);
@@ -359,7 +418,7 @@ ul.grid {
 }
 /*Buscar en mapa*/
 .ubicacion {
-
+    margin-right: 100px;
     display: flex;
     flex-wrap: wrap;
     position: relative;
@@ -421,13 +480,17 @@ ul.grid {
 
 }
 .mapa iframe{
+
     position: relative;
     top: -400px;
     left: 60%;
     margin-bottom: -400px;
+    margin-right: -800px;
+   
 }
-/* Contact Section */
+ /*Contact Section */
 .contact {
+    padding: 150px 100px;
     background-color: #f7f7f7;
 }
 
@@ -460,38 +523,43 @@ ul.grid {
     cursor: pointer;
     transition: all 0.3s ease 0s;
 }
-/*Descarca app section*/
 
-.descarga-app{
+
+/* Descarga app section */
+.descarga-app {
     background: #68d39a;
-    position: relative;
-    display: flex;
+    padding: 150px 100px;
+    text-align: center; /* Alinea el contenido al centro horizontalmente */
+    color: #000000;
 }
-.descarga-app h3 {
-    text-align: left;
-    font-size: 80px;
-    font-weight: bold;
-    position: absolute;
-    left: 150px;
-    top: 60px;
-}
-.descarga-app p{
-    text-align: left;
-    font-size: 30px;
-    position: relative;
-    margin: 20px;
-    left: -300px;
-    background-color: rgba(255, 255, 255, 0.87);
-    border-radius: 8px;
 
+.descarga-app .content {
+    max-width: 800px; /* Establece un ancho máximo según sea necesario */
+    margin: 0 auto; /* Centra el contenido horizontalmente */
 }
-.descarga-app img{
-    height: 300px;
-    position: absolute;
-    right: 30px;
-    top: 60px;
-    cursor: pointer;
+
+.descarga-app h3 {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
 }
+
+.descarga-app p {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.descarga-app .image {
+    max-width: 30%; /* Ajusta el ancho máximo según sea necesario */
+    margin: auto;
+}
+
+.descarga-app img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+}
+
 
 @media screen and (min-width: 800px) {
     .container {
