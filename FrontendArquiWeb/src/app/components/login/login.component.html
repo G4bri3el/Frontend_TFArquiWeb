@@ -18,6 +18,7 @@
             placeholder="usuario"
             [(ngModel)]="username"
           />
+
         </mat-form-field>
         <br />
 
@@ -30,11 +31,18 @@
             placeholder="contraseña"
             [(ngModel)]="password"
           />
+          
         </mat-form-field>
-        <br />
-        <a>¿Has olvidado tu contraseña?</a>
+
+        <br>
         <button mat-raised-button color="primary" (click)="login()">Ingresar</button>
-        <p>{{ mensaje }}</p>
+
+        <p>No tienes cuenta? <a [routerLink]="['/registro']">Regístrate</a></p>
+
+
+        <p class  style="color: #e74c3c;" >{{ mensaje }}</p>
+
+
       </mat-card>
     </div>
   </body>
