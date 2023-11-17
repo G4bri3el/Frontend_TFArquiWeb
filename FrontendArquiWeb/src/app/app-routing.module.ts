@@ -1,5 +1,5 @@
 import { ListarBicicletaClienteComponent } from './components/bicicleta/listar-bicicleta-cliente/listar-bicicleta-cliente.component';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { CreaeditaUsuarioComponent } from './components/usuario/creaedita-usuario/creaedita-usuario.component';
@@ -15,45 +15,55 @@ import { CreaeditaReservaComponent } from './components/reserva/creaedita-reserv
 import { RegistroComponent } from './components/registro/registro.component';
 import { ResenaComponent } from './components/resena/resena.component';
 import { CreaeditaResenaComponent } from './components/resena/creaedita-resena/creaedita-resena.component';
-import { vigilanteGuard } from './vigilante.guard';
+import { ListarLocalComponent } from './components/local/listar-local/listar-local.component';
+import { ListarResenaComponent } from './components/resena/listar-resena/listar-resena.component';
+import { ListarReservaComponent } from './components/reserva/listar-reserva/listar-reserva.component';
+import { ListarBicicletaComponent } from './components/bicicleta/listar-bicicleta/listar-bicicleta.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'registro', component: RegistroComponent},
+  { path: 'registro', component: RegistroComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'login', component: LoginComponent},
+  { path: 'login', component: LoginComponent },
   {
-    path: 'usuario', component: UsuarioComponent,canActivate: [vigilanteGuard], 
+    path: 'usuario', component: UsuarioComponent,
     children: [
       { path: 'nuevo', component: CreaeditaUsuarioComponent },
       { path: 'empresario', component: CreaeditaEmpresarioComponent },
     ],
   },
   {
-    path: 'bicicleta', component: BicicletaComponent,canActivate: [vigilanteGuard],
+    path: 'bicicleta', component: BicicletaComponent,
     children: [
       { path: 'nuevo', component: CreaeditaBicicletaComponent },
-      { path: 'edicion/:id', component:CreaeditaBicicletaComponent},
-      { path: 'listaCliente', component:ListarBicicletaClienteComponent}],
+      { path: 'listar', component: ListarBicicletaComponent},
+      { path: 'edicion/:id', component: CreaeditaBicicletaComponent },
+      { path: 'listaCliente', component: ListarBicicletaClienteComponent }],
   },
   {
-    path: 'local', component: LocalComponent, canActivate: [vigilanteGuard],
+    path: 'local', component: LocalComponent,
     children: [{
-      path: 'nuevo', component: CreaeditaLocalComponent }],
+
+      path: 'nuevo', component: CreaeditaLocalComponent
+    },
+    { path: 'listar', component: ListarLocalComponent }],
   },
   {
-    path:'reserva', component:ReservaComponent, canActivate: [vigilanteGuard],
+    path: 'reserva', component: ReservaComponent,
     children: [
-      {path:'nuevo', component:CreaeditaReservaComponent}
+      { path: 'nuevo', component: CreaeditaReservaComponent }
+      ,
+    { path: 'listar', component: ListarReservaComponent }
     ]
   },
   {
-    path:'resena', component:ResenaComponent, canActivate: [vigilanteGuard],
+    path: 'resena', component: ResenaComponent,
     children: [
-      {path:'nuevo', component:CreaeditaResenaComponent}
+      { path: 'nuevo', component: CreaeditaResenaComponent }
+      ,
+    { path: 'listar', component: ListarResenaComponent}
     ]
-  },
-  {path:'**', redirectTo:'home', pathMatch:'full'}
+  }
 
 ];
 
@@ -61,4 +71,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

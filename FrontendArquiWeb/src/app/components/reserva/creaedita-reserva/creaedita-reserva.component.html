@@ -82,8 +82,8 @@
           </mat-error>
         </mat-form-field>
         <br />
-        <button mat-raised-button color="primary">Aceptar</button>
-        <button mat-raised-button color="warn" routerLink="/reserva">
+        <button mat-raised-button color="primary" (click)="aceptar()">Aceptar</button>
+        <button mat-raised-button color="warn" routerLink="/reserva/listar">
           Cancelar
         </button>
         <p>{{ mensaje }}</p>
