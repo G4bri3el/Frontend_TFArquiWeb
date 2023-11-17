@@ -15,6 +15,7 @@ import { CreaeditaReservaComponent } from './components/reserva/creaedita-reserv
 import { RegistroComponent } from './components/registro/registro.component';
 import { ResenaComponent } from './components/resena/resena.component';
 import { CreaeditaResenaComponent } from './components/resena/creaedita-resena/creaedita-resena.component';
+import { vigilanteGuard } from './vigilante.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -22,36 +23,37 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent},
   {
-    path: 'usuario', component: UsuarioComponent,
+    path: 'usuario', component: UsuarioComponent,canActivate: [vigilanteGuard], 
     children: [
       { path: 'nuevo', component: CreaeditaUsuarioComponent },
       { path: 'empresario', component: CreaeditaEmpresarioComponent },
     ],
   },
   {
-    path: 'bicicleta', component: BicicletaComponent,
+    path: 'bicicleta', component: BicicletaComponent,canActivate: [vigilanteGuard],
     children: [
       { path: 'nuevo', component: CreaeditaBicicletaComponent },
       { path: 'edicion/:id', component:CreaeditaBicicletaComponent},
       { path: 'listaCliente', component:ListarBicicletaClienteComponent}],
   },
   {
-    path: 'local', component: LocalComponent,
+    path: 'local', component: LocalComponent, canActivate: [vigilanteGuard],
     children: [{
       path: 'nuevo', component: CreaeditaLocalComponent }],
   },
   {
-    path:'reserva', component:ReservaComponent,
+    path:'reserva', component:ReservaComponent, canActivate: [vigilanteGuard],
     children: [
       {path:'nuevo', component:CreaeditaReservaComponent}
     ]
   },
   {
-    path:'resena', component:ResenaComponent,
+    path:'resena', component:ResenaComponent, canActivate: [vigilanteGuard],
     children: [
       {path:'nuevo', component:CreaeditaResenaComponent}
     ]
-  }
+  },
+  {path:'**', redirectTo:'home', pathMatch:'full'}
 
 ];
 
