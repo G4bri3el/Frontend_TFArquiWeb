@@ -1,5 +1,6 @@
+import { MatSidenav } from '@angular/material/sidenav';
 import { LoginService } from './../../service/login/login.service';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -8,7 +9,12 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
   role: string = '';
+  sidenavOpened = true;
 
+
+  @ViewChild('sidenav') sidenav: MatSidenav;
+
+  
   constructor(private loginService: LoginService) { }
 
   cerrar(){
@@ -27,4 +33,9 @@ export class NavbarComponent {
       return false;
     }
   }
+
+  toggleSidenav() {
+    this.sidenavOpened = !this.sidenavOpened;
+  }
+
 }
