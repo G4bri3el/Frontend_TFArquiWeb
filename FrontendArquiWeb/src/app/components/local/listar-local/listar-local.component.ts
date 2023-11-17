@@ -12,21 +12,53 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 })
 export class ListarLocalComponent implements OnInit {
   dataSource: MatTableDataSource<Local> = new MatTableDataSource();
-  displayedColumns: string[] =
-    ['codigo', 'nombre', 'direccion', 'usuario'];
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  constructor(private lS: LocalService) {
 
-  }
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  constructor(
+    private lS: LocalService,
+   // private cS: CartService
+    ) {}
+
+
   ngOnInit(): void {
-    this.lS.list().subscribe(data => {
+    this.lS.list().subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
-    })
+    });
+
+    //metodo que actualiza el listado automaticamente
     this.lS.getList().subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
-
     });
+
+  }
+
+  onClickUpdate( local: Local){
+    
+  }
+  onClickDelete(id: number) {
+    this.lS.delete(id).subscribe((data) => {
+      this.lS.list().subscribe((data) => {
+        this.lS.setList(data);
+      });
+    });
+  }
+  
+  
+  TieneFoto(local: Local){
+    if(local.localfoto == " " || local.localfoto == ""){
+      return false;
+    }else{
+      return true;
+    }
+  }
+
+  NoTieneFoto(local: Local){
+    if(local.localfoto == " " || local.localfoto == ""){
+      return true;
+    }else{
+      return false;
+    }
   }
 }

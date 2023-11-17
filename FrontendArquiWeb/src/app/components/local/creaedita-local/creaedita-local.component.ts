@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import {
   FormGroup,
   FormBuilder,
@@ -21,22 +21,33 @@ export class CreaeditaLocalComponent implements OnInit {
   form: FormGroup = new FormGroup({});
   local: Local = new Local();
   mensaje: string = '';
+  localid: number=0;
+  edicion: boolean = false;
   file: File;
   url: any = '';
 
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
     private lS: LocalService,
     private imageService: ImageService
   ) {}
 
   ngOnInit(): void {
-    this.form = this.formBuilder.group({
-      localdireccion: ['', Validators.required],
-      localnombre: ['', Validators.required],
-      usuario: ['', Validators.required],
+    this.route.params.subscribe((data: Params) => {
+      this.localid = data['id'];
+      this.edicion = data['id'] != null;
+      this.init();
     });
+    this.form = this.formBuilder.group({
+      localnombre: ['', Validators.required],
+      localdireccion: ['', Validators.required],
+      usuario: ['', Validators.required],
+      
+    });
+    
+    
   }
   addNewFileLocal(value: File) {
     this.file = value;
@@ -58,6 +69,7 @@ export class CreaeditaLocalComponent implements OnInit {
         );
       } else {
         //--------si no hay imagen
+        this.mensaje = 'Imagen no encontrada';
       }
     } else {
       this.mensaje = 'Ingrese todos los campos!!';
@@ -69,12 +81,20 @@ export class CreaeditaLocalComponent implements OnInit {
     this.local.localnombre = this.form.value.localnombre;
     this.local.usuario.usuarioId = this.form.value.usuario;
     this.local.localfoto = this.url;
-    this.lS.insert(this.local).subscribe((data) => {
-      this.lS.list().subscribe((data) => {
-        this.lS.setList(data);
+    if (this.edicion) {
+      this.lS.update(this.local).subscribe(() => {
+        this.lS.list().subscribe((data) => {
+          this.lS.setList(data);
+        });
       });
-    });
-    this.router.navigate(['/local/listar']);
+    } else {
+      this.lS.insert(this.local).subscribe((data) => {
+        this.lS.list().subscribe((lista) => {
+          this.lS.setList(lista);
+        });
+      });
+    }
+    this.router.navigate(['local']);
   }
 
   obtenerControlCampo(nombreCampo: string): AbstractControl {
@@ -88,5 +108,19 @@ export class CreaeditaLocalComponent implements OnInit {
   onAceptarClick(event: Event) {
     event.preventDefault();
     this.aceptar(); // Llama al método onFormSubmit() u otra lógica según sea necesario
+  }
+  init() {
+    if (this.edicion) {
+      this.lS.listId(this.localid).subscribe((data) => {
+        this.local = data; // Asignar los datos al objeto bicicleta
+        this.form.patchValue({
+          localnombre: data.localnombre,
+          localdireccion: data.localdireccion,
+          usuario: data.usuario.usuarioId,
+          localfoto: data.localfoto,
+          
+        });
+      });
+    }
   }
 }

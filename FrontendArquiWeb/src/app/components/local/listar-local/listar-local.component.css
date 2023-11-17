@@ -1,0 +1,36 @@
+body{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    gap: 20px;
+  }
+  
+  .card-container {
+    display: grid;
+    grid-column: 1/span 3;  /* Espacio entre tarjetas */
+    grid-template-columns: repeat(3, 250px);
+    gap: 10px;
+    padding: 20px;
+    /* Agrega relleno al contenedor */
+    margin: 0 auto;
+  }
+  
+  .card {
+    width: 100%;
+    /* Opcional: Establece el ancho máximo de las tarjetas */
+    max-width: 250px;
+    /* Ancho máximo de las tarjetas */
+  }
+  
+  /* Media query para pantallas más pequeñas */
+  @media screen and (max-width: 600px) {
+    .card-container {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        /* Ajusta el tamaño de las tarjetas para pantallas más pequeñas */
+    }
+  }
+  
+  
+  .example-header-image {
+    background-image: url('https://img.freepik.com/fotos-premium/textura-papel-turquesa-motas-ruido_469558-22423.jpg');
+    background-size: cover;
+  }
