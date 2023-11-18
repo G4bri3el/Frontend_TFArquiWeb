@@ -1,40 +1,62 @@
-
-body{
-    background-image: linear-gradient(to top, rgba(28, 27, 27, 0.5), rgb(23, 178, 13,0.3)),url("../../../../assets/images/fondobici.jpg");
-    background-size: cover;
-    background-position: center;
+body {
+  background-image: linear-gradient(
+      to top,
+      rgba(28, 27, 27, 0.5),
+      rgb(23, 178, 13, 0.3)
+    ),
+    url("../../../../assets/images/fondobici.jpg");
+  background-size: cover;
+  background-position: center;
 }
 .example-card {
-    max-width: max-content;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 60px;
-    padding-right: 60px;
-    margin-top: 10px;
+  max-width: max-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 60px;
+  padding-right: 60px;
+  margin-top: 10px;
 }
 
 .outer-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.contra-group{
-    position: relative;
+.contra-group {
+  position: relative;
+}
+
+.contra-group input {
+  width: 100%;
+}
+
+.eye-icon {
+  position: absolute;
+  right: -5px;
+  top: -5px;
+  cursor: pointer;
+}
+
+.split-form {
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-section,
+.right-section {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
     
-}
-
-.contra-group input{ 
-    width: 100%;
-}
-
-.eye-icon{
-    position: absolute;
-    right: -5px;
-    top: -5px;
-    cursor: pointer;
-}

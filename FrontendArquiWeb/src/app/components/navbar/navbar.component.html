@@ -3,9 +3,8 @@
   <mat-sidenav #sidenav class="sidenav" mode="side" opened *ngIf="verificar()">
 
     <div class="logo-container">
-      <img src="../../../assets/images/Group 24 (1).png" alt="Logo de la aplicación">
+      <img src="../../../assets/images/Logo_sidenav.png" alt="Logo de la aplicación">
     </div>
-
 
     <!-- Contenido de la barra lateral -->
     <button mat-button [matMenuTriggerFor]="menuUsuarios" *ngIf="validarRol('ADMIN')"><mat-icon>people</mat-icon>

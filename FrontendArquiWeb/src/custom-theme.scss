@@ -115,7 +115,7 @@ $FrontendArquiWeb-primary: mat.define-palette($my-primary-color-green);
 $FrontendArquiWeb-accent: mat.define-palette($my-accent-color);
  
 // The warn palette is optional (defaults to red).
-$FrontendArquiWeb-warn: mat.define-palette($my-warn-color);
+$FrontendArquiWeb-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".

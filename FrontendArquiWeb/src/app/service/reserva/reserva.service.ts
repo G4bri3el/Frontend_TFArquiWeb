@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 import { Reserva } from 'src/app/model/reserva';
 import { environment } from 'src/environments/environment.development';
 
@@ -14,7 +14,7 @@ export class ReservaService {
   private listaCambio = new Subject<Reserva[]>();
   constructor(private http:HttpClient) {}
 
-  list() {
+  list(): Observable<Reserva[]>  {
     let token = sessionStorage.getItem('token');
 
     return this.http.get<Reserva[]>(this.url, {
@@ -23,10 +23,10 @@ export class ReservaService {
         .set('Content-Type', 'application/json'),
     });
   }
-  insert(r: Reserva) {
+  insert(r: Reserva): Observable<any> {
     let token = sessionStorage.getItem('token');
 
-    return this.http.post(this.url, r, {
+    return this.http.post<any>(this.url, r, {
       headers: new HttpHeaders()
         .set('Authorization', `Bearer ${token}`)
         .set('Content-Type', 'application/json'),
@@ -35,7 +35,7 @@ export class ReservaService {
   setList(listaNueva: Reserva[]) {
     this.listaCambio.next(listaNueva);
   }
-  getList() {
+  getList():Observable<Reserva[]> {
     return this.listaCambio.asObservable();
   }
 }

@@ -19,6 +19,7 @@ import{MatNativeDateModule} from '@angular/material/core'
 import { MatSelectModule } from '@angular/material/select';
 import {MatCardModule} from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import {MatTreeModule} from '@angular/material/tree';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatNativeDateModule,
     MatCardModule,
     MatSidenavModule,
+    MatTreeModule,
   ],
 })
 export class MaterialModule {}

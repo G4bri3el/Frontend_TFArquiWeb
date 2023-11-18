@@ -38,4 +38,5 @@ export class NavbarComponent {
     this.sidenavOpened = !this.sidenavOpened;
   }
 
+  
 }
