@@ -16,7 +16,7 @@ export class ListarBicicletaClienteComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   constructor(
     private bS: BicicletaService,
-    private cS: CartService
+    private cS: CartService,
     ) {}
 
 
@@ -53,4 +53,9 @@ export class ListarBicicletaClienteComponent {
       return false;
     }
   }
+
+
+ 
+
+
 }
