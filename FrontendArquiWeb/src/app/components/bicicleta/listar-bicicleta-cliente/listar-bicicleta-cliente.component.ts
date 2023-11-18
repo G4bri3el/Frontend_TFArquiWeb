@@ -22,13 +22,20 @@ export class ListarBicicletaClienteComponent {
 
   ngOnInit(): void {
     this.bS.list().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
+
+      const bicicletasDisponibles = data.filter(bici => bici.bicicletaestado==true);
+      
+
+      this.dataSource = new MatTableDataSource(bicicletasDisponibles);
       this.dataSource.paginator = this.paginator;
     });
 
     //metodo que actualiza el listado automaticamente
     this.bS.getList().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
+
+      const bicicletasDisponibles = data.filter(bici => bici.bicicletaestado==true);
+      
+      this.dataSource = new MatTableDataSource(bicicletasDisponibles);
       this.dataSource.paginator = this.paginator;
     });
 
