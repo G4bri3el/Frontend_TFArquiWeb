@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
+import { ReservasxEmpresarioDto } from 'src/app/model/ReservasxEmpresarioDto';
 import { Reserva } from 'src/app/model/reserva';
 import { environment } from 'src/environments/environment.development';
 
@@ -14,7 +15,7 @@ export class ReservaService {
   private listaCambio = new Subject<Reserva[]>();
   constructor(private http:HttpClient) {}
 
-  list(): Observable<Reserva[]>  {
+  list() {
     let token = sessionStorage.getItem('token');
 
     return this.http.get<Reserva[]>(this.url, {
@@ -23,10 +24,10 @@ export class ReservaService {
         .set('Content-Type', 'application/json'),
     });
   }
-  insert(r: Reserva): Observable<any> {
+  insert(r: Reserva) {
     let token = sessionStorage.getItem('token');
 
-    return this.http.post<any>(this.url, r, {
+    return this.http.post(this.url, r, {
       headers: new HttpHeaders()
         .set('Authorization', `Bearer ${token}`)
         .set('Content-Type', 'application/json'),
@@ -35,7 +36,15 @@ export class ReservaService {
   setList(listaNueva: Reserva[]) {
     this.listaCambio.next(listaNueva);
   }
-  getList():Observable<Reserva[]> {
+  getList() {
     return this.listaCambio.asObservable();
+  }
+  getCount(): Observable<ReservasxEmpresarioDto[]> {
+    let token = sessionStorage.getItem('token');
+    return this.http.get<ReservasxEmpresarioDto[]>(`${this.url}/reservaxem`, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
 }
