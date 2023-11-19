@@ -159,6 +159,11 @@ export class CreaeditaBicicletaComponent {
     }
   }
 
+
+  onAceptarClick(event: Event) {
+    event.preventDefault();
+    this.aceptar(); // Llama al método onFormSubmit() u otra lógica según sea necesario
+  }
   
 
 }

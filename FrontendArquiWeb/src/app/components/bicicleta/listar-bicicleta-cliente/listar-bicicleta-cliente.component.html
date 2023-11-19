@@ -11,25 +11,33 @@
     <div *ngFor="let bicicleta of dataSource.data">
         <mat-card class="card">
           <mat-card-header>
-           
-            <div mat-card-avatar class="example-header-image"></div>
-
+          
             <mat-card-title>{{ bicicleta.bicicletamodelo }}</mat-card-title>
             <mat-card-subtitle>{{bicicleta.local.localnombre}}</mat-card-subtitle>
+
           </mat-card-header>
 
-          <img mat-card-image *ngIf="TieneFoto(bicicleta)" src= {{bicicleta.bicicletafoto}} alt="Photo of bicicleta" >
+
+          <img mat-card-image *ngIf="TieneFoto(bicicleta)" src= {{bicicleta.bicicletafoto}} alt="Photo of bicicleta">
+  
+
           <img mat-card-image *ngIf="NoTieneFoto(bicicleta)" src= "http://localhost:8080/media/NoImage.png" alt="Photo of bicicleta" >
 
           <mat-card-content>
+          
             <p>Precio: {{ bicicleta.bicicletaprecio }}</p>
             <p>Detalles: {{ bicicleta.bicicletadetalles }}</p>
             <p>N° de aro: {{ bicicleta.bicicletanumaro }}</p>
             <!-- Otras propiedades de la bicicleta que desees mostrar en la tarjeta -->
           </mat-card-content>
 
+
           <mat-card-actions>
-            <button mat-button (click)="onClick(bicicleta)" color="primary">CARRITO</button>
+            <button mat-button (click)="onClick(bicicleta)" class="card-button" color="primary">
+              <span class="material-icons">shopping_cart</span>
+              <span>AÑADIR</span>
+            </button>
+            
           </mat-card-actions>
 
         </mat-card>

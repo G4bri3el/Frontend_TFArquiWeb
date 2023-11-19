@@ -20,7 +20,7 @@ import { MatSelectModule } from '@angular/material/select';
 import {MatCardModule} from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import {MatTreeModule} from '@angular/material/tree';
-
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [],
@@ -45,6 +45,7 @@ import {MatTreeModule} from '@angular/material/tree';
     MatCardModule,
     MatSidenavModule,
     MatTreeModule,
+    NgChartsModule
   ],
 })
 export class MaterialModule {}
