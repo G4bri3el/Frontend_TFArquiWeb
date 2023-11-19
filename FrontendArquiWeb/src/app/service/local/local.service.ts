@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { Local } from 'src/app/model/local';
 import { GananciaLocalDTO } from 'src/app/model/GananciaLocalDTO';
+import { LocalEmpresarioDTO } from 'src/app/model/LocalEmpresarioDTO';
 
 const base_url = environment.base;
 
@@ -79,5 +80,15 @@ export class LocalService {
     });
   }
 
+  getCount():Observable<LocalEmpresarioDTO[]>{
+    let token = sessionStorage.getItem('token');
+
+    return this.http.get<LocalEmpresarioDTO[]>(`${this.url}/cantidad`, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
+
+  }
 
 }

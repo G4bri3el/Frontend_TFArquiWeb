@@ -32,6 +32,7 @@
       <mat-icon>description</mat-icon>
       Reportes</button>
 
+
     <button mat-button [matMenuTriggerFor]="menuSalir" class="salir">
       <mat-icon>logout</mat-icon> <!-- Ícono de logout -->
       Cerrar Sesión</button>
@@ -72,6 +73,7 @@
 
     <mat-menu #menuReportes="matMenu">
       <button mat-menu-item routerLink="/reporte/medina">Ganancias por local</button>
+      <button mat-menu-item routerLink="/reporte/paccini">Cantidad de Locales por Empresario</button>
     </mat-menu>
 
     <mat-menu #menuSalir="matMenu">
