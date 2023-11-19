@@ -29,6 +29,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { ResenaComponent } from './components/resena/resena.component';
 import { ListarResenaComponent } from './components/resena/listar-resena/listar-resena.component';
 import { CreaeditaResenaComponent } from './components/resena/creaedita-resena/creaedita-resena.component';
+import { ReporteComponent } from './components/reporte/reporte.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { CreaeditaResenaComponent } from './components/resena/creaedita-resena/c
     ResenaComponent,
     ListarResenaComponent,
     CreaeditaResenaComponent,
+    ReporteComponent,
   ],
   imports: [
     BrowserModule,
