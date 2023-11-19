@@ -27,7 +27,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   {
-    path: 'usuario', component: UsuarioComponent, canActivate:[vigilanteGuard],
+    path: 'usuario', component: UsuarioComponent,
     children: [
       { path: 'nuevo', component: CreaeditaUsuarioComponent },
       { path: 'empresario', component: CreaeditaEmpresarioComponent },

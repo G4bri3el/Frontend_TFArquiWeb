@@ -25,4 +25,9 @@ export class CartService {
     this.cartProduct.splice(index, 1);
     this._products.next(this.cartProduct);
   }
+
+  deleteTodo(){
+    this.cartProduct.splice(0, this.cartProduct.length);
+    this._products.next(this.cartProduct);
+  }
 }

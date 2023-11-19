@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { map } from 'rxjs';
+import { concatMap, map } from 'rxjs';
 import { Bicicleta } from 'src/app/model/bicicleta';
 import { Detalledereserva } from 'src/app/model/detalledereserva';
 import { Reserva } from 'src/app/model/reserva';
@@ -17,11 +17,15 @@ export class CartComponent implements OnInit {
   total: number = 0;
   reserva: Reserva = new Reserva();
   fechaFin: Date = new Date(Date.now());
-
+  completo: boolean = false;
   idRev: number = 0;
   detalleReserva: Detalledereserva = new Detalledereserva();
 
-  constructor(private cS: CartService, private rS: ReservaService, private drS: DetalledereservaService) {}
+  constructor(
+    private cS: CartService,
+    private rS: ReservaService,
+    private drS: DetalledereservaService
+  ) {}
 
   ngOnInit(): void {
     this.cS.products.subscribe((bici) => {
@@ -49,8 +53,8 @@ export class CartComponent implements OnInit {
   checkout(): void {
     this.reserva.reservafechafin = this.fechaFin;
     this.reserva.reservamontototal = this.total;
-    this.reserva.usuario.usuarioId = 1;
-     this.rS.insert(this.reserva).subscribe((data) => {
+    this.reserva.usuario.usuarioId = 2; //sacar el id del usuario logueado
+    this.rS.insert(this.reserva).subscribe((data) => {
       this.rS.list().subscribe((data) => {
         this.rS.setList(data);
       });
@@ -59,18 +63,43 @@ export class CartComponent implements OnInit {
     //Obtener el ultimo id de la reserva
     this.rS.getList().subscribe((data) => {
       this.idRev = data[data.length - 1].reservaid;
+
       console.log(this.idRev);
-    });
+      
     //Insertar en detalle reserva cada bicicleta
-    
+      this.registrarDetalleRes();
+      this.cS.deleteTodo();
+    });
+  }
 
-    this.detalleReserva.reserva.reservaid = this.idRev;
-    this.detalleReserva.bicicleta.bicicletaid = 1;
-    this.drS.insert(this.detalleReserva).subscribe((data) => {
-      this.drS.list().subscribe((data) => {
-        this.drS.setList(data);
-      });
+  idlist: Bicicleta[] = [];
+
+  registrarDetalleRes(): void {
+    this.cS.products.subscribe((data) => {
+      this.idlist = data;
     });
 
+    for (let j = 0; j < this.idlist.length; j++) {
+      console.log(this.idlist[j].bicicletaid);
+
+      const nuevoDetalleReserva: Detalledereserva = new Detalledereserva();
+      nuevoDetalleReserva.reserva.reservaid = this.idRev;
+      nuevoDetalleReserva.bicicleta.bicicletaid = this.idlist[j].bicicletaid;
+      this.drS.insert(nuevoDetalleReserva).subscribe((data) => {
+        this.drS.list().subscribe((data) => {
+          this.drS.setList(data);
+        });
+      });
+    }
+
+    /*
+      nuevoDetalleReserva.bicicleta.bicicletaid =
+        this.bicicletas[i].bicicletaid;
+
+      this.drS.insert(nuevoDetalleReserva).subscribe((data) => {
+        this.drS.list().subscribe((data) => {
+          this.drS.setList(data);
+        });
+      });*/
   }
 }
