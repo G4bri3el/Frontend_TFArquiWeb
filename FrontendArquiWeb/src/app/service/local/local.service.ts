@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Local } from 'src/app/model/local';
+import { GananciaLocalDTO } from 'src/app/model/GananciaLocalDTO';
 
 const base_url = environment.base;
 
@@ -68,4 +69,15 @@ export class LocalService {
         .set('Content-Type', 'application/json'),
     });
   }
+
+  getGanancias(): Observable<GananciaLocalDTO[]> {
+    let token = sessionStorage.getItem('token');
+    return this.http.get<GananciaLocalDTO[]>(`${this.url}/ganancia`, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
+  }
+
+
 }
