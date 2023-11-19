@@ -30,7 +30,7 @@ import { ResenaComponent } from './components/resena/resena.component';
 import { ListarResenaComponent } from './components/resena/listar-resena/listar-resena.component';
 import { CreaeditaResenaComponent } from './components/resena/creaedita-resena/creaedita-resena.component';
 import { ReporteComponent } from './components/reporte/reporte.component';
-
+import { ReporteMedinaComponent } from './components/reporte/reporte-medina/reporte-medina.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,6 +57,7 @@ import { ReporteComponent } from './components/reporte/reporte.component';
     ListarResenaComponent,
     CreaeditaResenaComponent,
     ReporteComponent,
+    ReporteMedinaComponent
   ],
   imports: [
     BrowserModule,
