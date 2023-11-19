@@ -29,6 +29,10 @@ import { CartComponent } from './components/cart/cart.component';
 import { ResenaComponent } from './components/resena/resena.component';
 import { ListarResenaComponent } from './components/resena/listar-resena/listar-resena.component';
 import { CreaeditaResenaComponent } from './components/resena/creaedita-resena/creaedita-resena.component';
+import { ReporteReservaxempresarioComponent } from './components/reportes/reporte-reservaxempresario/reporte-reservaxempresario.component';
+import { NgChartsModule } from 'ng2-charts';
+import { ReportesComponent } from './components/reportes/reportes/reportes.component';
+
 
 @NgModule({
   declarations: [
@@ -55,6 +59,8 @@ import { CreaeditaResenaComponent } from './components/resena/creaedita-resena/c
     ResenaComponent,
     ListarResenaComponent,
     CreaeditaResenaComponent,
+    ReporteReservaxempresarioComponent,
+    ReportesComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,6 +68,7 @@ import { CreaeditaResenaComponent } from './components/resena/creaedita-resena/c
     BrowserAnimationsModule,
     MaterialModule,
     MatSnackBarModule,
+    NgChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
