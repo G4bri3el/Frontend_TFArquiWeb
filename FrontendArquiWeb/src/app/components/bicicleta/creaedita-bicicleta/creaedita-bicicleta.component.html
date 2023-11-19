@@ -1,81 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
 
-  <body>
-    <div class="container" style="text-align: center">
-      <br />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+ 
+</head>
+
+<body>
+  <div class="container">
+    <br />
+    
       <h2>Registro de bicicletas</h2>
+   
 
-      <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+    <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+      <div class="form-column1">
         <mat-form-field class="example-full-width">
           <mat-label>Modelo</mat-label>
-          <input
-            matInput
-            placeholder="Modelo"
-            formControlName="bicicletamodelo"
-          />
+          <input matInput placeholder="Modelo" formControlName="bicicletamodelo" />
         </mat-form-field>
         <br />
 
         <mat-form-field class="example-full-width">
           <mat-label>Precio</mat-label>
-          <input
-            matInput
-            placeholder="Precio"
-            formControlName="bicicletaprecio"
-            (input)="onInputChange($event)"
-          />
+          <input matInput placeholder="Precio" formControlName="bicicletaprecio" (input)="onInputChange($event)" />
         </mat-form-field>
         <br />
 
         <mat-form-field class="example-full-width">
           <mat-label>N° de aro</mat-label>
           <mat-select formControlName="bicicletanumaro">
-            <!--- valor / vista de bicicleta -->
-            <mat-option *ngFor="let p of numerodearos" [value]="p.value">{{
-              p.viewValue
-            }}</mat-option>
+            <mat-option *ngFor="let p of numerodearos" [value]="p.value">{{ p.viewValue }}</mat-option>
           </mat-select>
         </mat-form-field>
         <br />
 
         <mat-form-field class="example-full-width">
           <mat-label>Detalles</mat-label>
-          <input
-            matInput
-            placeholder="Detalles"
-            formControlName="bicicletadetalles"
-          />
+          <input matInput placeholder="Detalles" formControlName="bicicletadetalles" />
         </mat-form-field>
         <br />
 
         <mat-form-field class="example-full-width">
           <mat-label>Local</mat-label>
           <mat-select formControlName="local">
-            <!--- valor / vista de bicicleta -->
-            <mat-option *ngFor="let p of listaLocales" [value]="p.localid">{{
-              p.localnombre
-            }}</mat-option>
+            <mat-option *ngFor="let p of listaLocales" [value]="p.localid">{{ p.localnombre }}</mat-option>
           </mat-select>
         </mat-form-field>
         <br />
+      </div>
 
-        <div>
-          <app-image-upload (newFileEvent)="addNewFileBici($event)"></app-image-upload>
+      <div class="form-column2">
+        <div class="image-container">
+          <div>
+            <app-image-upload (newFileEvent)="addNewFileBici($event)"></app-image-upload>
+          </div>
         </div>
-        <br />
+      </div>
 
-        <button mat-raised-button color="primary">Aceptar</button>
-        <button mat-raised-button color="accent" routerLink="/bicicleta">
+      <br />
+
+  
+      <button mat-raised-button color="primary" (click)="onAceptarClick($event)">Aceptar</button>
+        <button mat-raised-button color="accent" routerLink="/bicicleta/listar">
           Cancelar
         </button>
-        <p>{{ mensaje }}</p>
-      </form>
-    </div>
-  </body>
+
+    
+      <p>{{ mensaje }}</p>
+    </form>
+  </div>
+</body>
+
 </html>

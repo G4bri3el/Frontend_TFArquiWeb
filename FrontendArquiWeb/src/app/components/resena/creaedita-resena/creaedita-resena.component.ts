@@ -62,7 +62,7 @@ export class CreaeditaResenaComponent implements OnInit{
         });
       });
 
-      this.router.navigate(['resenas']);
+      this.router.navigate(['/resena/listar']);
     }else{
       this.mensaje = 'Por favor complete todos los campos obligatorios.';
     }

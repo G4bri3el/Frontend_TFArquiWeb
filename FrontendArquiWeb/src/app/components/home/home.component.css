@@ -44,7 +44,7 @@
     font-weight: 700;
     color: #1c1b1b;
     padding: 9px 25px;
-    background: #68d39a; /* Cambiado el fondo a verde */
+    background: #68d39a; 
     border: none;
     border-radius: 50px;
     cursor: pointer;
@@ -55,9 +55,9 @@
     font-size: 18px;
     margin-left: 20px;
     font-weight: 700;
-    color: #ffffff; /* Cambiado el color del texto a blanco */
+    color: #ffffff; 
     padding: 9px 25px;
-    background: #000000; /* Cambiado el fondo a negro */
+    background: #000000; 
     border: none;
     border-radius: 50px;
     cursor: pointer;
@@ -72,8 +72,8 @@
 }
 
 .header .btnregistro button:hover {
-    background-color: #f7f7f7; /* Cambia el color de fondo al mismo que el botón verde */
-    color: #68d39a; /* Cambia el color del texto a blanco */
+    background-color: #f7f7f7; 
+    color: #68d39a; 
     transform: scale(1.2);
 }
 
@@ -88,6 +88,7 @@ body{
     height: 100%;
     width: 100%;
     position: relative;
+    font-family: 'Sen', sans-serif;
 }
 
 footer {
@@ -183,7 +184,7 @@ footer img{
 
 
 html {
-    font: normal 16px sans-serif;
+    font: normal 16px ;
     scroll-behavior: smooth !important;
 }
 
@@ -245,7 +246,7 @@ section{
 section h3.title {
     color: #1c1b1b;
     text-transform: capitalize;
-    font: bold 36px 'Open Sans', sans-serif;
+    font: bold 36px ;
     margin-bottom: 50px;
     text-align: center;
 }

@@ -88,12 +88,14 @@ export class CreaeditaBicicletaComponent {
             this.url = response.url;
             console.log(this.url);
             this.continuarConRegistro();
+
+            this.router.navigate(['/bicicleta/listar']);
           },
           (error) => {
             console.error('Error al subir la imagen:', error);
             this.mensaje = 'Error al subir la imagen';
           }
-        );
+        ); 
       } else {
         this.mensaje = 'Imagen no encontrada';
       }
@@ -156,4 +158,12 @@ export class CreaeditaBicicletaComponent {
       });
     }
   }
+
+
+  onAceptarClick(event: Event) {
+    event.preventDefault();
+    this.aceptar(); // Llama al método onFormSubmit() u otra lógica según sea necesario
+  }
+  
+
 }

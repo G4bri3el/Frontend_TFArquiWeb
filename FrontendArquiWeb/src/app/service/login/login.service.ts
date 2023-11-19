@@ -16,11 +16,7 @@ export class LoginService {
 
   verificarSesion(){
     let token = sessionStorage.getItem("token");
-    if(token != null){
-      return true;
-    }else{
-      return false;
-    }
+    return token != null
   }
 
   showRole(){
