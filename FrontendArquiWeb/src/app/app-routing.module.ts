@@ -20,6 +20,8 @@ import { ListarResenaComponent } from './components/resena/listar-resena/listar-
 import { ListarReservaComponent } from './components/reserva/listar-reserva/listar-reserva.component';
 import { ListarBicicletaComponent } from './components/bicicleta/listar-bicicleta/listar-bicicleta.component';
 import { vigilanteGuard } from './vigilante.guard';
+import { ReportesComponent } from './components/reportes/reportes/reportes.component';
+import { ReporteReservaxempresarioComponent } from './components/reportes/reporte-reservaxempresario/reporte-reservaxempresario.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -55,6 +57,12 @@ const routes: Routes = [
       { path: 'nuevo', component: CreaeditaReservaComponent }
       ,
     { path: 'listar', component: ListarReservaComponent }
+    ]
+  },
+  {
+    path: 'reportes', component: ReportesComponent,canActivate:[vigilanteGuard],
+    children: [
+      { path: 'reservaxem', component: ReporteReservaxempresarioComponent }
     ]
   },
   {
