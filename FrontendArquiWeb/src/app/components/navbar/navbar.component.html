@@ -50,11 +50,11 @@
       <button mat-menu-item routerLink="/bicicleta/nuevo"
         *ngIf="validarRol('ADMIN') || validarRol('EMPRESARIO')">Registrar Bicicleta</button>
       <button mat-menu-item routerLink="/bicicleta/listar"
-        *ngIf="validarRol('ADMIN') || validarRol('EMPRESARIO')">Listar Bicicletas</button>
-      <button mat-menu-item routerLink="/bicicleta/id" *ngIf="validarRol('ADMIN') || validarRol('EMPRESARIO')">Mis
-        Bicicletas</button>
+        *ngIf="validarRol('ADMIN') || validarRol('EMPRESARIO')">Mis Bicicletas</button>
+      <!-- <button mat-menu-item routerLink="/bicicleta/id" *ngIf="validarRol('ADMIN') || validarRol('EMPRESARIO')">
+        Mis Bicicletas</button>-->
       <button mat-menu-item routerLink="/bicicleta/listaCliente"
-        *ngIf="validarRol('ADMIN') || validarRol('CLIENTE')">Bicicletas</button>
+        *ngIf="validarRol('ADMIN') || validarRol('CLIENTE')">Buscar Bicicleta</button>
     </mat-menu>
 
     <mat-menu #menuReserva="matMenu">

@@ -1,114 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
 
-  <body>
-    <div class="container">
-      <br />
-      <h2 style="text-align: center">Lista de bicicletas</h2>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
 
-      <div style="text-align: right">
-        <button mat-raised-button color="primary" routerLink="/bicicleta/nuevo">
-          Nuevo
-        </button>
-      </div>
-      <br />
+<body>
+  <div class="card-container">
+    <div *ngFor="let bicicleta of dataSource.data">
+      <mat-card class="card">
+        <mat-card-header>
 
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-        <ng-container matColumnDef="codigo">
-          <th mat-header-cell *matHeaderCellDef>Código</th>
-          <td mat-cell *matCellDef="let element">{{ element.bicicletaid }}</td>
-        </ng-container>
+          <!--<div mat-card-avatar class="example-header-image"></div>-->
 
-        <ng-container matColumnDef="modelo">
-          <th mat-header-cell *matHeaderCellDef>Modelo</th>
-          <td mat-cell *matCellDef="let element">
-            {{ element.bicicletamodelo }}
-          </td>
-        </ng-container>
+          <mat-card-title>{{ bicicleta.bicicletamodelo }}</mat-card-title>
+          <mat-card-subtitle>{{bicicleta.local.localnombre}}</mat-card-subtitle>
+        </mat-card-header>
 
-        <ng-container matColumnDef="estado">
-          <th mat-header-cell *matHeaderCellDef>Estado</th>
-          <td mat-cell *matCellDef="let element">
-            {{ element.bicicletaestado ? "Disponible" : "No disponible" }}
-          </td>
-        </ng-container>
+        <img mat-card-image *ngIf="TieneFoto(bicicleta)" src={{bicicleta.bicicletafoto}} alt="Photo of bicicleta">
+        <img mat-card-image *ngIf="NoTieneFoto(bicicleta)" src="http://localhost:8080/media/NoImage.png"
+          alt="Photo of bicicleta">
 
-        <ng-container matColumnDef="precio">
-          <th mat-header-cell *matHeaderCellDef>Precio</th>
-          <td mat-cell *matCellDef="let element">
-            {{ element.bicicletaprecio }}
-          </td>
-        </ng-container>
+        <mat-card-content>
+          <p>Disponible: {{ bicicleta.bicicletaestado ? 'Sí' : 'No' }}</p>
+          <p>Precio: {{ bicicleta.bicicletaprecio }}</p>
+          <p>Detalles: {{ bicicleta.bicicletadetalles }}</p>
+          <p>N° de aro: {{ bicicleta.bicicletanumaro }}</p>
+          <!-- Otras propiedades de la bicicleta que desees mostrar en la tarjeta -->
+        </mat-card-content>
 
-        <ng-container matColumnDef="numaro">
-          <th mat-header-cell *matHeaderCellDef>Numero</th>
-          <td mat-cell *matCellDef="let element">
-            {{ element.bicicletanumaro }}
-          </td>
-        </ng-container>
+        <mat-card-actions class="card-actions">
 
-        <ng-container matColumnDef="detalles">
-          <th mat-header-cell *matHeaderCellDef>Detalles</th>
-          <td mat-cell *matCellDef="let element">
-            {{ element.bicicletadetalles }}
-          </td>
-        </ng-container>
+          <button mat-button (click)="onClickUpdate(bicicleta) " class="card-button" color="primary">
+            <mat-icon>edit</mat-icon>
+          </button>
 
-        <ng-container matColumnDef="foto">
-          <th mat-header-cell *matHeaderCellDef>Foto</th>
-          <td mat-cell *matCellDef="let element">
-            {{ element.bicicletafoto }}
-          </td>
-        </ng-container>
+          <button mat-button (click)="onClickDelete(bicicleta.bicicletaid)"  class="card-button" color="primary">
+            <mat-icon>delete</mat-icon>
+          </button>
 
-        <ng-container matColumnDef="local">
-          <th mat-header-cell *matHeaderCellDef>Local</th>
-          <td mat-cell *matCellDef="let element">
-            {{ element.local.localnombre }}
-          </td>
-        </ng-container>
 
-        <ng-container matColumnDef="eliminar">
-          <th mat-header-cell *matHeaderCellDef>Eliminar</th>
-          <td mat-cell *matCellDef="let element">
-            <button
-              mat-icon-button
-              matTooltip="Eliminar"
-              (click)="eliminar(element.bicicletaid)"
-            >
-              <mat-icon>delete</mat-icon>
-            </button>
-          </td>
-        </ng-container>
+        </mat-card-actions>
 
-        <ng-container matColumnDef="editar">
-          <th mat-header-cell *matHeaderCellDef>Editar</th>
-          <td mat-cell *matCellDef="let element">
-            <button
-              mat-icon-button
-              matTooltip="Editar"
-              [routerLink]="['/bicicleta/edicion', element.bicicletaid]"
-            >
-              <mat-icon>edit</mat-icon>
-            </button>
-          </td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-      </table>
-
-      <br>
-      <mat-paginator
-        [pageSizeOptions]="[5, 10, 25, 100]"
-        showFirstLastButtons
-      ></mat-paginator>
+      </mat-card>
     </div>
-  </body>
+
+  </div>
+
+
+</body>
+
 </html>
