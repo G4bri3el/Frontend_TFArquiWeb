@@ -12,7 +12,7 @@ import { ResenaService } from 'src/app/service/resena/resena.service';
 export class ListarResenaComponent implements OnInit{
   dataSource: MatTableDataSource<Resena> = new MatTableDataSource();
   displayedColumns: string[] =
-  ['codigo', 'numeroestrellas', 'comentario', 'reserva'];
+  ['codigo', 'usuario', 'numeroestrellas', 'comentario', 'reserva'];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
 
