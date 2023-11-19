@@ -4,6 +4,9 @@ body{
     gap: 20px;
   }
   
+  .botonre{
+    text-align: center;
+  }
   .card-container {
     display: grid;
     grid-column: 1/span 3;  /* Espacio entre tarjetas */

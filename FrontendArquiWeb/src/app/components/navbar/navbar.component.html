@@ -24,7 +24,7 @@
       <mat-icon>event</mat-icon> <!-- Ícono de reserva -->
       Reserva</button>
 
-    <button mat-button [matMenuTriggerFor]="menuResena">
+    <button mat-button [matMenuTriggerFor]="menuResena" *ngIf="validarRol('CLIENTE')">
       <mat-icon>star</mat-icon> <!-- Ícono de estrella -->
        Reseñas</button>
 
@@ -58,7 +58,7 @@
     </mat-menu>
 
     <mat-menu #menuReserva="matMenu">
-      <button mat-menu-item routerLink="/reserva/nuevo">Registrar reserva</button>
+      <button mat-menu-item routerLink="/reserva/nuevo" *ngIf="validarRol('CLIENTE')">Registrar reserva</button>
       <button mat-menu-item routerLink="/reserva/listar" *ngIf="validarRol('ADMIN')">Listar reservas</button>
       <button mat-menu-item routerLink="/reserva/id">Mis reservas</button>
     </mat-menu>

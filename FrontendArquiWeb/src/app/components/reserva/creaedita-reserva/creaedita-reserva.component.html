@@ -74,7 +74,7 @@
           <mat-label>Usuario</mat-label>
           <mat-select formControlName="usuario">
             <mat-option *ngFor="let p of ListaUsuarios" [value]="p.usuarioNombre">
-              {{p.usuarioNombre}}
+              {{p.usuarioId}}
             </mat-option>
           </mat-select>
           <mat-error *ngIf="obtenerControlCampo('usuario')?.errors?.['required']">
@@ -86,6 +86,13 @@
         <button mat-raised-button color="warn" routerLink="/reserva/listar">
           Cancelar
         </button>
+        <br>
+        <br><br>
+        <div class="botonresena">
+          <button mat-raised-button color="primary"  routerLink="/resena/nuevo"><mat-icon>star</mat-icon>Registrar reseña</button>
+          <br><br>
+        </div>
+        
         <p>{{ mensaje }}</p>
 
 
