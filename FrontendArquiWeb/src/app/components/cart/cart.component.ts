@@ -6,6 +6,7 @@ import { Reserva } from 'src/app/model/reserva';
 import { CartService } from 'src/app/service/cart/cart.service';
 import { DetalledereservaService } from 'src/app/service/detalledereserva/detalledereserva.service';
 import { ReservaService } from 'src/app/service/reserva/reserva.service';
+import { UserDataService } from 'src/app/service/user-data/user-data.service';
 
 @Component({
   selector: 'app-cart',
@@ -17,17 +18,19 @@ export class CartComponent implements OnInit {
   total: number = 0;
   reserva: Reserva = new Reserva();
   fechaFin: Date = new Date(Date.now());
-  completo: boolean = false;
   idRev: number = 0;
-  detalleReserva: Detalledereserva = new Detalledereserva();
+  idUser: number = 0;
 
   constructor(
     private cS: CartService,
     private rS: ReservaService,
-    private drS: DetalledereservaService
+    private drS: DetalledereservaService,
+    private uDS: UserDataService,
   ) {}
 
   ngOnInit(): void {
+    this.loadUserData();
+
     this.cS.products.subscribe((bici) => {
       this.bicicletas = bici;
     });
@@ -53,7 +56,8 @@ export class CartComponent implements OnInit {
   checkout(): void {
     this.reserva.reservafechafin = this.fechaFin;
     this.reserva.reservamontototal = this.total;
-    this.reserva.usuario.usuarioId = 2; //sacar el id del usuario logueado
+
+    this.reserva.usuario.usuarioId = this.idUser; //sacar el id del usuario logueado
     this.rS.insert(this.reserva).subscribe((data) => {
       this.rS.list().subscribe((data) => {
         this.rS.setList(data);
@@ -91,15 +95,13 @@ export class CartComponent implements OnInit {
         });
       });
     }
-
-    /*
-      nuevoDetalleReserva.bicicleta.bicicletaid =
-        this.bicicletas[i].bicicletaid;
-
-      this.drS.insert(nuevoDetalleReserva).subscribe((data) => {
-        this.drS.list().subscribe((data) => {
-          this.drS.setList(data);
-        });
-      });*/
   }
+
+  loadUserData(): void {
+    this.uDS.getUserData().subscribe((data) => {
+      this.idUser = data.usuarioId;
+      console.log("Id usuari:"+this.idUser);
+    });
+  }
+
 }

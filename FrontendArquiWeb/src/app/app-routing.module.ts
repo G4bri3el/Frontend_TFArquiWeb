@@ -64,6 +64,9 @@ const routes: Routes = [
       ,
     { path: 'listar', component: ListarResenaComponent}
     ]
+  },
+  {
+    path: '**', redirectTo: 'home', pathMatch: 'full'  
   }
 
 ];
