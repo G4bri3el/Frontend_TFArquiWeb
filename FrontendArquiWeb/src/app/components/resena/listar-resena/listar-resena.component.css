@@ -1,38 +1,109 @@
 div{
-    text-align: center;
+  text-align: center;
 }
 #form {
-    width: 250px;
-    margin: 0 auto;
-    height: 50px;
-  }
+  width: 250px;
+  margin: 0 auto;
+  height: 50px;
+}
+
+#form p {
+  text-align: center;
+}
+
+#form label {
+  font-size: 20px;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+label {
+  color: grey;
+}
+
+.clasificacion {
+  direction: rtl;
+  unicode-bidi: bidi-override;
+}
+
+label:hover,
+label:hover ~ label {
+  color: orange;
+}
+
+input[type="radio"]:checked ~ label {
+  color: orange;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+}
+
+h2 {
+  color: #333;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid #000;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #fff;
+}
+
+td {
+  background-color: #fff;
+}
+
+.mat-paginator {
+  margin-top: 20px;
+}
+
+/* Estilo para las estrellas */
+span {
+  display: inline-block;
+  width: 20px; /* Ajusta según tus necesidades */
+}
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f0f0;
+  font-family: 'Sen', sans-serif;
   
-  #form p {
-    text-align: center;
-  }
-  
-  #form label {
-    font-size: 20px;
-  }
-  
-  input[type="radio"] {
-    display: none;
-  }
-  
-  label {
-    color: grey;
-  }
-  
-  .clasificacion {
-    direction: rtl;
-    unicode-bidi: bidi-override;
-  }
-  
-  label:hover,
-  label:hover ~ label {
-    color: orange;
-  }
-  
-  input[type="radio"]:checked ~ label {
-    color: orange;
-  }
+}
+
+ h2 {
+  font-size: 25px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.container {
+  background-color: #68D39A;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  padding-bottom: 30px;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  font-size: 13px;
+  padding-left: 23px;
+}
