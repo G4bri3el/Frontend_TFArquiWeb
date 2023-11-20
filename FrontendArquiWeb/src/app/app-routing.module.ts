@@ -24,6 +24,7 @@ import { ReporteComponent } from './components/reporte/reporte.component';
 import { ReporteMedinaComponent } from './components/reporte/reporte-medina/reporte-medina.component';
 import { ReportesComponent } from './components/reportes/reportes/reportes.component';
 import { ReporteReservaxempresarioComponent } from './components/reportes/reporte-reservaxempresario/reporte-reservaxempresario.component';
+import { ReportePacciniComponent } from './components/reporte/reporte-paccini/reporte-paccini.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -75,8 +76,8 @@ const routes: Routes = [
   {
     path: 'reporte', component: ReporteComponent,canActivate:[vigilanteGuard],
     children: [
-      { path: 'medina', component: ReporteMedinaComponent}
-     
+      { path: 'medina', component: ReporteMedinaComponent},
+      {path: 'paccini', component: ReportePacciniComponent}
     ]
   },
   {
