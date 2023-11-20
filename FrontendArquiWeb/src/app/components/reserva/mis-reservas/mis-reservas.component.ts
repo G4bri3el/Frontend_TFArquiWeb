@@ -1,23 +1,29 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Reserva } from 'src/app/model/reserva';
 import { ReservaService } from 'src/app/service/reserva/reserva.service';
+import { UserDataService } from 'src/app/service/user-data/user-data.service';
 
 @Component({
-  selector: 'app-listar-reserva',
-  templateUrl: './listar-reserva.component.html',
-  styleUrls: ['./listar-reserva.component.css']
+  selector: 'app-mis-reservas',
+  templateUrl: './mis-reservas.component.html',
+  styleUrls: ['./mis-reservas.component.css']
 })
-export class ListarReservaComponent implements OnInit {
-
+export class MisReservasComponent {
   dataSource: MatTableDataSource<Reserva> = new MatTableDataSource();
   displayedColumns: string[] =
   ['codigo', 'fechainicio', 'fechafin', 'monto', 'usuario'];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  constructor(private rS:ReservaService){}
+
+  idUser: number = 0;
+
+  constructor(private rS:ReservaService, private uDS: UserDataService){}
   ngOnInit(): void {
-    this.rS.list().subscribe((data) => {
+    this.loadUserData();
+
+
+    this.rS.getReservasByUser(this.idUser).subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
     });
@@ -29,6 +35,10 @@ export class ListarReservaComponent implements OnInit {
     });
   }
 
-
-  
+  loadUserData(): void {
+    this.uDS.getUserData().subscribe((data) => {
+      this.idUser = data.usuarioId;
+      console.log("Id usuari:"+this.idUser);
+    });
+  }
 }

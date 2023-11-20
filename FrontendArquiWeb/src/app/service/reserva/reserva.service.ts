@@ -47,4 +47,14 @@ export class ReservaService {
         .set('Content-Type', 'application/json'),
     });
   }
+
+  getReservasByUser(id: number): Observable<Reserva[]> {
+    let token = sessionStorage.getItem('token');
+    return this.http.get<Reserva[]>(`${this.url}/${id}`, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
+  }
+
 }

@@ -20,11 +20,11 @@
       Bicicleta</button>
 
 
-    <button mat-button [matMenuTriggerFor]="menuReserva" *ngIf="validarRol('ADMIN') || validarRol('CLIENTE')">
+    <button mat-button [matMenuTriggerFor]="menuReserva" *ngIf="validarRol('ADMIN') || validarRol('CLIENTE') || validarRol('EMPRESARIO')">
       <mat-icon>event</mat-icon> <!-- Ícono de reserva -->
       Reserva</button>
 
-    <button mat-button [matMenuTriggerFor]="menuResena" *ngIf="validarRol('ADMIN') || validarRol('CLIENTE')">
+    <button mat-button [matMenuTriggerFor]="menuResena" *ngIf="validarRol('ADMIN') || validarRol('CLIENTE') || validarRol('EMPRESARIO')">
       <mat-icon>star</mat-icon> <!-- Ícono de estrella -->
       Reseñas</button>
 
@@ -61,12 +61,12 @@
 
     <mat-menu #menuReserva="matMenu">
       <button mat-menu-item routerLink="/reserva/nuevo" *ngIf="validarRol('CLIENTE')">Registrar reserva</button>
-      <button mat-menu-item routerLink="/reserva/listar" *ngIf="validarRol('ADMIN')">Listar reservas</button>
-      <button mat-menu-item routerLink="/reserva/id">Mis reservas</button>
+      <button mat-menu-item routerLink="/reserva/listar" *ngIf="validarRol('ADMIN') || validarRol('EMPRESARIO')">Listar reservas</button>
+      <button mat-menu-item routerLink="/reserva/id" *ngIf="validarRol('ADMIN') || validarRol('CLIENTE')">Mis reservas</button>
     </mat-menu>
 
     <mat-menu #menuResena="matMenu">
-      <button mat-menu-item routerLink="/resena/nuevo">Registrar reseña</button>
+      <button mat-menu-item routerLink="/resena/nuevo" *ngIf="validarRol('ADMIN') || validarRol('CLIENTE')">Registrar reseña</button>
       <button mat-menu-item routerLink="/resena/listar">Listar reseña</button>
     </mat-menu>
 

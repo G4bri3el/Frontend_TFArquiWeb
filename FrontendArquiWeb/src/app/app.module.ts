@@ -36,6 +36,7 @@ import { NgChartsModule } from 'ng2-charts';
 import { ReportesComponent } from './components/reportes/reportes/reportes.component';
 
 import { ReportePacciniComponent } from './components/reporte/reporte-paccini/reporte-paccini.component';
+import { MisReservasComponent } from './components/reserva/mis-reservas/mis-reservas.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { ReportePacciniComponent } from './components/reporte/reporte-paccini/re
     ReporteReservaxempresarioComponent,
     ReportesComponent,
     ReportePacciniComponent,
+    MisReservasComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <br />
+      <h2 style="text-align: center">Mis Reservas</h2>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!-- Columna codigo -->
+    <ng-container matColumnDef="codigo"> <!--- Aqui se pone igual que en el ts-->
+      <th mat-header-cell *matHeaderCellDef> Codigo </th> <!--- Esto es lo que ve el usuario, se pone cualquier cosa -->
+      <td mat-cell *matCellDef="let element"> {{element.reservaid}} </td> <!--- Aqui debe ser igual que en el model de ingredient-->
+    </ng-container>
+
+    <!-- Columna Nombre -->
+    <ng-container matColumnDef="fechainicio">
+      <th mat-header-cell *matHeaderCellDef> Fecha de inicio </th>
+      <td mat-cell *matCellDef="let element"> {{element.reservafechainicio}} </td>
+    </ng-container>
+
+    <!-- Columna cantidad-->
+    <ng-container matColumnDef="fechafin">
+      <th mat-header-cell *matHeaderCellDef> Fecha de fin </th>
+      <td mat-cell *matCellDef="let element"> {{element.reservafechafin}} </td>
+    </ng-container>
+
+    <!-- Columna Tipo -->
+    <ng-container matColumnDef="monto">
+      <th mat-header-cell *matHeaderCellDef> Monto total </th>
+      <td mat-cell *matCellDef="let element"> {{element.reservamontototal}} </td>
+    </ng-container>
+
+    <!-- Columna postre (la asociada a dessert) -->
+    <ng-container matColumnDef="usuario">
+      <th mat-header-cell *matHeaderCellDef> Usuario </th>
+      <td mat-cell *matCellDef="let element"> {{element.usuario.usuarionombre}} </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator
+        [pageSizeOptions]="[2, 4, 6, 8]"
+        showFirstLastButtons
+      ></mat-paginator>
+
+
+      <br>
+        <button mat-raised-button color="primary" routerLink="/resena/listar" class="botonre">Ver reseñas</button>
+    </div>
+</body>
+</html>

@@ -25,6 +25,7 @@ import { ReporteMedinaComponent } from './components/reporte/reporte-medina/repo
 import { ReportesComponent } from './components/reportes/reportes/reportes.component';
 import { ReporteReservaxempresarioComponent } from './components/reportes/reporte-reservaxempresario/reporte-reservaxempresario.component';
 import { ReportePacciniComponent } from './components/reporte/reporte-paccini/reporte-paccini.component';
+import { MisReservasComponent } from './components/reserva/mis-reservas/mis-reservas.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -62,7 +63,9 @@ const routes: Routes = [
     children: [
       { path: 'nuevo', component: CreaeditaReservaComponent }
       ,
-    { path: 'listar', component: ListarReservaComponent }
+    { path: 'listar', component: ListarReservaComponent },
+    { path: 'id', component:  MisReservasComponent}
+
     ]
   },
   {
