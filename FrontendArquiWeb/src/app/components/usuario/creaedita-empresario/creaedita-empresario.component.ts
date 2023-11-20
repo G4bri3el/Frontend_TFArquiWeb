@@ -20,6 +20,8 @@ export class CreaeditaEmpresarioComponent  implements OnInit{
   usuario: Usuario = new Usuario();
   mensaje: string = '';
 
+  visible: boolean = true;
+  changetype: boolean = true;
   constructor(
     private rS: RolesService,
     private router: Router,
@@ -83,5 +85,10 @@ export class CreaeditaEmpresarioComponent  implements OnInit{
       throw new Error(`Control no encontrado para el campo ${nombreCampo}`);
     }
     return control;
+  }
+
+  viewpassword(){
+    this.visible = !this.visible;
+    this.changetype = !this.changetype; 
   }
 }

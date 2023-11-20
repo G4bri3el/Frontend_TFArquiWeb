@@ -7,108 +7,150 @@
   </head>
   <body>
     <div class="outer-container" style="text-align: center">
-      <mat-card class="example-card">
+      <mat-card class="example-card split-form">
         <h2>Registro de Empresario</h2>
         <form [formGroup]="form" (submit)="aceptar()" class="example-form">
-          <mat-form-field class="example-full-width">
-            <mat-label>Correo</mat-label>
-            <input
-              matInput
-              placeholder="correo@gmail.com"
-              formControlName="usuarioCorreo"
-            />
-          </mat-form-field>
-          <br />
+          <div class="split-form">
+            <div class="left-section">
+              <mat-form-field class="example-full-width">
+                <mat-label>Correo</mat-label>
+                <input
+                  matInput
+                  placeholder="correo@gmail.com"
+                  formControlName="usuarioCorreo"
+                />
+              </mat-form-field>
+              <br />
 
-          <mat-form-field class="example-full-width">
-            <mat-label>Contraseña</mat-label>
-            <input
-              type="password"
-              matInput
-              placeholder="contraseña"
-              formControlName="usuarioContrasena"
-            />
-          </mat-form-field>
-          <br />
+              <mat-form-field class="example-full-width">
+                <mat-label>Contraseña</mat-label>
+                <div class="contra-group">
+                  <input
+                    [type]="changetype ? 'password' : 'text'"
+                    matInput
+                    placeholder="contraseña"
+                    formControlName="usuarioContrasena"
+                  /><span class="eye-icon" (click)="viewpassword()"
+                    ><i
+                      [ngClass]="
+                        visible
+                          ? 'fa-regular fa-eye'
+                          : 'fa-regular fa-eye-slash'
+                      "
+                    ></i
+                  ></span>
+                </div>
+              </mat-form-field>
+              <br />
 
-          <mat-form-field class="example-full-width">
-            <mat-label>Telefono</mat-label>
-            <input
-              matInput
-              placeholder="987654321"
-              formControlName="usuarioTelefono"
-            />
-          </mat-form-field>
-          <br />
+              <mat-form-field class="example-full-width">
+                <mat-label>Telefono</mat-label>
+                <input
+                  matInput
+                  placeholder="987654321"
+                  formControlName="usuarioTelefono"
+                />
+              </mat-form-field>
+              <br />
 
-          <mat-form-field class="example-full-width">
-            <mat-label>Nombre</mat-label>
-            <input
-              matInput
-              placeholder="Nombre"
-              formControlName="usuarioNombre"
-            />
-          </mat-form-field>
-          <br />
+              <mat-form-field class="example-full-width">
+                <mat-label>Nombre</mat-label>
+                <input
+                  matInput
+                  placeholder="Nombre"
+                  formControlName="usuarioNombre"
+                />
+              </mat-form-field>
+              <br />
 
-          <mat-form-field class="example-full-width">
-            <mat-label>Apellido</mat-label>
-            <input
-              matInput
-              placeholder="Apellido"
-              formControlName="usuarioApellido"
-            />
-          </mat-form-field>
-          <br />
+              <mat-form-field class="example-full-width">
+                <mat-label>Apellido</mat-label>
+                <input
+                  matInput
+                  placeholder="Apellido"
+                  formControlName="usuarioApellido"
+                />
+              </mat-form-field>
+              <br />
+            </div>
+            <div class="right-section">
+              <mat-form-field class="example-full-width">
+                <mat-label>DNI</mat-label>
+                <input
+                  matInput
+                  placeholder="Dni"
+                  formControlName="usuarioDni"
+                />
+              </mat-form-field>
+              <br />
 
-          <mat-form-field class="example-full-width">
-            <mat-label>DNI</mat-label>
-            <input matInput placeholder="Dni" formControlName="usuarioDni" />
-          </mat-form-field>
-          <br />
+              <mat-form-field class="example-full-width">
+                <mat-label>Edad</mat-label>
+                <input
+                  matInput
+                  placeholder="Edad"
+                  formControlName="usuarioEdad"
+                />
+              </mat-form-field>
+              <br />
 
-          <mat-form-field class="example-full-width">
-            <mat-label>Edad</mat-label>
-            <input matInput placeholder="Edad" formControlName="usuarioEdad" />
-          </mat-form-field>
-          <br />
-
-          <mat-form-field class="example-full-width">
-            <mat-label>Ciudad</mat-label>
-            <input
-              matInput
-              placeholder="Ciudad"
-              formControlName="usuarioCiudad"
-            />
-          </mat-form-field>
-          <br />
-          <!--********************* -->
-          <mat-form-field class="example-full-width">
-            <mat-label>Foto</mat-label>
-            <input matInput placeholder="foto" formControlName="usuarioFoto" />
-          </mat-form-field>
-          <br />
-          <mat-form-field class="example-full-width">
-            <mat-label>Razon Social</mat-label>
-            <input matInput placeholder="razon social" formControlName="usuarioRazonsocial" />
-          </mat-form-field>
-          <br />
-          <mat-form-field class="example-full-width">
-            <mat-label>Direccion</mat-label>
-            <input matInput placeholder="direccion" formControlName="usuarioDireccion" />
-          </mat-form-field>
-          <br />
-          <mat-form-field class="example-full-width">
-            <mat-label>RUC</mat-label>
-            <input matInput placeholder="10603645948" formControlName="usuarioRuc" />
-          </mat-form-field>
-          <br />
-
-          <button mat-raised-button color="primary" (click)="aceptar()">Crear Cuenta</button>
-          <button mat-raised-button color="accent" routerLink="/usuario/registro">
-            Cancelar
-          </button>
-          <p>{{ mensaje }}</p>
+              <mat-form-field class="example-full-width">
+                <mat-label>Ciudad</mat-label>
+                <input
+                  matInput
+                  placeholder="Ciudad"
+                  formControlName="usuarioCiudad"
+                />
+              </mat-form-field>
+              <br />
+              <!--********************* -->
+              <mat-form-field class="example-full-width">
+                <mat-label>Foto</mat-label>
+                <input
+                  matInput
+                  placeholder="foto"
+                  formControlName="usuarioFoto"
+                />
+              </mat-form-field>
+              <br />
+              <mat-form-field class="example-full-width">
+                <mat-label>Razon Social</mat-label>
+                <input
+                  matInput
+                  placeholder="razon social"
+                  formControlName="usuarioRazonsocial"
+                />
+              </mat-form-field>
+              <br />
+              <mat-form-field class="example-full-width">
+                <mat-label>Direccion</mat-label>
+                <input
+                  matInput
+                  placeholder="direccion"
+                  formControlName="usuarioDireccion"
+                />
+              </mat-form-field>
+              <br />
+              <mat-form-field class="example-full-width">
+                <mat-label>RUC</mat-label>
+                <input
+                  matInput
+                  placeholder="10603645948"
+                  formControlName="usuarioRuc"
+                />
+              </mat-form-field>
+              <br />
+            </div>
+          </div>
+          <div class="button-container">
+            <button mat-raised-button color="primary" (click)="aceptar()">
+              Crear Cuenta
+            </button>
+            <button mat-raised-button color="accent" routerLink="/registro">
+              Cancelar
+            </button>
+            <p>{{ mensaje }}</p>
+          </div>
         </form>
       </mat-card>
     </div>

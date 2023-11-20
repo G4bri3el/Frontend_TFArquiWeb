@@ -7,11 +7,20 @@ body {
     font-family: 'Sen', 'Sans-serif';
     background-color: #d9d9d9 /* Color de fondo opcional */
 }
-
 .outer-container {
     text-align: center;
 }
+.logo-container {
+    max-width: 100px; /* Define el ancho máximo de la imagen */
+    margin: 20px; /* Añade un margen para separar la imagen de otros elementos */
+    margin-left: 85px;
+}
 
+.logo-container img {
+    width: 100%; /* Hace que la imagen ocupe el 100% del contenedor, ajustándose al ancho máximo */
+    height: auto; /* Mantiene la proporción original de la imagen */
+    display: block; /* Elimina el espacio adicional debajo de la imagen */
+}
 .example-card {
     max-width: 500px; /* Ajusta el ancho máximo del contenedor */
     width: 90%; /* Utiliza porcentaje para la capacidad de respuesta */
