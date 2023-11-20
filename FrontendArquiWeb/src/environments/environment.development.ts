@@ -1,4 +1,4 @@
 export const environment = {
     production: false,
-    base: "http://localhost:8080",
+    base: "https://grupo04-tf-arqui-web.rj.r.appspot.com",
 };
