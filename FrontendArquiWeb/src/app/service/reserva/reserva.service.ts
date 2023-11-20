@@ -48,7 +48,7 @@ export class ReservaService {
     });
   }
 
-  getReservasByUser(id: number): Observable<Reserva[]> {
+  getReservasByUser(id: number) {
     let token = sessionStorage.getItem('token');
     return this.http.get<Reserva[]>(`${this.url}/${id}`, {
       headers: new HttpHeaders()

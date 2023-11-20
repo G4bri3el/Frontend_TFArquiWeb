@@ -21,17 +21,18 @@ export class MisReservasComponent {
   constructor(private rS:ReservaService, private uDS: UserDataService){}
   ngOnInit(): void {
     this.loadUserData();
+  }
 
+  mostrarDATOS(){
+    
 
     this.rS.getReservasByUser(this.idUser).subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
     });
-
     this.rS.getList().subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
-
     });
   }
 
@@ -39,6 +40,9 @@ export class MisReservasComponent {
     this.uDS.getUserData().subscribe((data) => {
       this.idUser = data.usuarioId;
       console.log("Id usuari:"+this.idUser);
+      this.mostrarDATOS();
     });
+
+   
   }
 }
