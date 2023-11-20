@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import * as moment from 'moment';
+import moment from 'moment';
 import { Reserva } from 'src/app/model/reserva';
 import { Usuario } from 'src/app/model/usuario';
 import { ReservaService } from 'src/app/service/reserva/reserva.service';

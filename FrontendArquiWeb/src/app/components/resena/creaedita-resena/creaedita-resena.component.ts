@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Resena } from 'src/app/model/resena';
 import { Reserva } from 'src/app/model/reserva';
 import { ReservaService } from 'src/app/service/reserva/reserva.service';
 import { ResenaService } from '../../../service/resena/resena.service';
 
 @Component({
-  selector: 'app-creaedita-resena',
+  selector: 'app-creaedita-resena', 
   templateUrl: './creaedita-resena.component.html',
   styleUrls: ['./creaedita-resena.component.css']
 })
@@ -16,6 +16,10 @@ export class CreaeditaResenaComponent implements OnInit{
   form: FormGroup = new FormGroup({});
   resenita: Resena = new Resena();
   mensaje: string = '';
+  idresena: number = 0;
+  edicion: boolean = false;
+  file: File;
+  url: string = '';
 
   cantidadestrellas: { value: number; viewValue: string }[] = [
     { value: 1, viewValue:  '★' },
@@ -37,8 +41,9 @@ export class CreaeditaResenaComponent implements OnInit{
   ) { }
 
   ngOnInit(): void {
+
     this.form = this.formBuilder.group({
-      resenaestrellas: ['', Validators.required], 
+      resenaestrellas: ['', Validators.required],
       resenacomentario: ['', Validators.required],
       reserva: ['', Validators.required],
     });
@@ -55,19 +60,16 @@ export class CreaeditaResenaComponent implements OnInit{
       this.resenita.resenaestrellas = this.form.value.resenaestrellas;
       this.resenita.resenacomentario = this.form.value.resenacomentario;
       this.resenita.reserva.reservaid = this.form.value.reserva;
-
-      this.reS.insert(this.resenita).subscribe(data => {
-        this.reS.list().subscribe(lista => {
-          this.reS.setList(lista);
+      this.reS.insert(this.resenita).subscribe((data) => {
+        this.reS.list().subscribe((data) => {
+          this.reS.setList(data);
         });
       });
-
-      this.router.navigate(['/resena/listar']);
-    }else{
-      this.mensaje = 'Por favor complete todos los campos obligatorios.';
+      this.router.navigate(['components/resenas']);
+    } else {
+      this.mensaje = 'Completo los campos!!';
     }
   }
-
   obtenerControlCampo(nombreCampo: string): AbstractControl {
     const control = this.form.get(nombreCampo);
     if (!control) {
@@ -75,6 +77,5 @@ export class CreaeditaResenaComponent implements OnInit{
     }
     return control;
   }
-
 
 }

@@ -5,4 +5,4 @@ export class Resena{
   resenaestrellas:number=0;
   resenacomentario:string="";
   reserva: Reserva=new Reserva();
-}
+} 
