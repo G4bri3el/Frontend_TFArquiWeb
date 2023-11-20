@@ -33,22 +33,12 @@
           </mat-error>
         </mat-form-field>
         <br />
-        <mat-form-field class="example-full-width">
-          <mat-label>ID Empresario</mat-label>
-          <input matInput placeholder="1" formControlName="usuario" />
-          <mat-error
-            *ngIf="obtenerControlCampo('usuario')?.errors?.['required']"
-          >
-            El propietario es obligatorio.
-          </mat-error>
-        </mat-form-field>
-        <br />
         <div>
           <app-image-upload (newFileEvent)="addNewFileLocal($event)"></app-image-upload>
         </div>
         <br />
         <button mat-raised-button color="primary"(click)="onAceptarClick($event)">Aceptar</button>
-        <button mat-raised-button color="warn" routerLink="/local/listar">
+        <button mat-raised-button color="warn" routerLink="/local/mi">
           Cancelar
         </button>
         <p>{{ mensaje }}</p>

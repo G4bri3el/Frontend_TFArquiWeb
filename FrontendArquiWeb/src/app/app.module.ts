@@ -31,6 +31,13 @@ import { ListarResenaComponent } from './components/resena/listar-resena/listar-
 import { CreaeditaResenaComponent } from './components/resena/creaedita-resena/creaedita-resena.component';
 import { ReporteComponent } from './components/reporte/reporte.component';
 import { ReporteMedinaComponent } from './components/reporte/reporte-medina/reporte-medina.component';
+import { ReporteReservaxempresarioComponent } from './components/reportes/reporte-reservaxempresario/reporte-reservaxempresario.component';
+import { NgChartsModule } from 'ng2-charts';
+import { ReportesComponent } from './components/reportes/reportes/reportes.component';
+
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,7 +64,9 @@ import { ReporteMedinaComponent } from './components/reporte/reporte-medina/repo
     ListarResenaComponent,
     CreaeditaResenaComponent,
     ReporteComponent,
-    ReporteMedinaComponent
+    ReporteMedinaComponent,
+    ReporteReservaxempresarioComponent,
+    ReportesComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,6 +74,7 @@ import { ReporteMedinaComponent } from './components/reporte/reporte-medina/repo
     BrowserAnimationsModule,
     MaterialModule,
     MatSnackBarModule,
+    NgChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

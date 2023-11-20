@@ -25,7 +25,7 @@
             <!-- Otras propiedades de la bicicleta que desees mostrar en la tarjeta -->
           </mat-card-content>
           <mat-card-actions>
-            <button mat-button [routerLink]="" color="primary">
+            <button mat-button (click)="onClickUpdate(local)" color="primary">
               <mat-icon>edit</mat-icon>
             </button>
             <button mat-button (click)="onClickDelete(local.localid)" color="primary">

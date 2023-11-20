@@ -74,6 +74,8 @@ export class CartComponent implements OnInit {
       this.registrarDetalleRes();
       this.cS.deleteTodo();
     });
+
+    
   }
 
   idlist: Bicicleta[] = [];

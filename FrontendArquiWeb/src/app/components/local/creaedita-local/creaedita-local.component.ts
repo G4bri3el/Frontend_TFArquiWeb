@@ -8,9 +8,8 @@ import {
 } from '@angular/forms';
 import { Local } from 'src/app/model/local';
 import { LocalService } from 'src/app/service/local/local.service';
-import { Usuario } from 'src/app/model/usuario';
-import { ImageUploadComponent } from '../../image-upload/image-upload.component';
 import { ImageService } from 'src/app/service/image.service';
+import { UserDataService } from 'src/app/service/user-data/user-data.service';
 
 @Component({
   selector: 'app-creaedita-local',
@@ -25,16 +24,20 @@ export class CreaeditaLocalComponent implements OnInit {
   edicion: boolean = false;
   file: File;
   url: any = '';
+  idUser: number = 0;
 
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private lS: LocalService,
-    private imageService: ImageService
+    private imageService: ImageService,
+    private uDS: UserDataService,
+
   ) {}
 
   ngOnInit(): void {
+    this.loadUserData();
     this.route.params.subscribe((data: Params) => {
       this.localid = data['id'];
       this.edicion = data['id'] != null;
@@ -43,8 +46,6 @@ export class CreaeditaLocalComponent implements OnInit {
     this.form = this.formBuilder.group({
       localnombre: ['', Validators.required],
       localdireccion: ['', Validators.required],
-      usuario: ['', Validators.required],
-      
     });
     
     
@@ -79,7 +80,7 @@ export class CreaeditaLocalComponent implements OnInit {
   continuarConRegistro(): void {
     this.local.localdireccion = this.form.value.localdireccion;
     this.local.localnombre = this.form.value.localnombre;
-    this.local.usuario.usuarioId = this.form.value.usuario;
+    this.local.usuario.usuarioId = this.idUser;
     this.local.localfoto = this.url;
     if (this.edicion) {
       this.lS.update(this.local).subscribe(() => {
@@ -94,7 +95,7 @@ export class CreaeditaLocalComponent implements OnInit {
         });
       });
     }
-    this.router.navigate(['local']);
+    this.router.navigate(['local/mi']);
   }
 
   obtenerControlCampo(nombreCampo: string): AbstractControl {
@@ -122,5 +123,12 @@ export class CreaeditaLocalComponent implements OnInit {
         });
       });
     }
+  }
+
+  loadUserData(): void {
+    this.uDS.getUserData().subscribe((data) => {
+      this.idUser = data.usuarioId;
+      console.log("Id usuari:"+this.idUser);
+    });
   }
 }

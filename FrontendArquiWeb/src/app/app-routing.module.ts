@@ -22,6 +22,8 @@ import { ListarBicicletaComponent } from './components/bicicleta/listar-biciclet
 import { vigilanteGuard } from './vigilante.guard';
 import { ReporteComponent } from './components/reporte/reporte.component';
 import { ReporteMedinaComponent } from './components/reporte/reporte-medina/reporte-medina.component';
+import { ReportesComponent } from './components/reportes/reportes/reportes.component';
+import { ReporteReservaxempresarioComponent } from './components/reportes/reporte-reservaxempresario/reporte-reservaxempresario.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -46,10 +48,13 @@ const routes: Routes = [
   {
     path: 'local', component: LocalComponent,canActivate:[vigilanteGuard],
     children: [{
-
       path: 'nuevo', component: CreaeditaLocalComponent
     },
-    { path: 'listar', component: ListarLocalComponent }],
+    { path: 'listar', component: ListarLocalComponent },
+    { path: 'edicion/:id', component: CreaeditaLocalComponent },
+    { path: 'mi', component: ListarLocalComponent },
+  ],
+
   },
   {
     path: 'reserva', component: ReservaComponent,canActivate:[vigilanteGuard],
@@ -68,15 +73,20 @@ const routes: Routes = [
     ]
   },
   {
-    path: '**', redirectTo: 'home', pathMatch: 'full'  
-  }
-,
-  {
     path: 'reporte', component: ReporteComponent,canActivate:[vigilanteGuard],
     children: [
       { path: 'medina', component: ReporteMedinaComponent}
      
     ]
+  },
+  {
+    path: 'reportes', component: ReportesComponent,canActivate:[vigilanteGuard],
+    children: [
+      { path: 'reservaxempresario', component: ReporteReservaxempresarioComponent}
+    ]
+  },
+  {
+    path: '**', redirectTo: 'home', pathMatch: 'full'  
   }
 
 ];

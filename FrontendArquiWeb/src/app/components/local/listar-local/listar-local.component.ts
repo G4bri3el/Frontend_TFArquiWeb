@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Local } from 'src/app/model/local';
 import { LocalService } from 'src/app/service/local/local.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-listar-local',
@@ -16,7 +17,8 @@ export class ListarLocalComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   constructor(
     private lS: LocalService,
-   // private cS: CartService
+   private router: Router,
+
     ) {}
 
 
@@ -34,9 +36,6 @@ export class ListarLocalComponent implements OnInit {
 
   }
 
-  onClickUpdate( local: Local){
-    
-  }
   onClickDelete(id: number) {
     this.lS.delete(id).subscribe((data) => {
       this.lS.list().subscribe((data) => {
@@ -60,5 +59,10 @@ export class ListarLocalComponent implements OnInit {
     }else{
       return false;
     }
+  }
+
+  onClickUpdate( local: Local){
+    const url = `/local/edicion/${local.localid}`; // Ajusta la URL según tus necesidades
+    this.router.navigateByUrl(url);
   }
 }
