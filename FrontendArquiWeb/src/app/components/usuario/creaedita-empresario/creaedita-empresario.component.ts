@@ -72,7 +72,6 @@ export class CreaeditaEmpresarioComponent  implements OnInit{
           this.uS.setlist(lista);
         });
       });
-
       this.router.navigate(['login']);
     }else{
       this.mensaje = 'Por favor complete todos los campos obligatorios.';

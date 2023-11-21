@@ -14,6 +14,6 @@ export class ImageService {
     const formData = new FormData();
     formData.append('file',imagen);
 
-    return this.http.post<any>('http://localhost:8080/media/upload',formData)
+    return this.http.post<any>('https://grupo04-tf-arqui-web.rj.r.appspot.com/media/upload',formData)
   }
 }
